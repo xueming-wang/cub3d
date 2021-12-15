@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/15 17:09:59 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/15 19:34:45 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,14 @@
 //确认是不是文件名字
 int parsing_filename(char *av)
 {
-    int i;
-    
-    i = ft_strlen(av);
-    while (av[i] != '.')
-        i--;
-    if (i = 0)
+    if(ft_strrchr(av, '.') == NULL)
         _exit_("Error\n", "File Name is Wrong!\n", FAILURE);
-    i++;
-    if(ft_strcmp((av + i), "cub") != 0)
+    if(ft_strcmp(av, "cub") != 0)
         _exit_("Error\n", "File Name is Wrong!\n", FAILURE);
     return (1);
 } 
 
-//获取文件数据
+//获取文件数据到data
 void parsing_file(char *av, t_cub3d *cub3d)
 {
     t_parsing parsing;
@@ -47,4 +41,9 @@ void parsing_file(char *av, t_cub3d *cub3d)
         free(parsing.line);    
     }    
     close(parsing.fd);
+}
+
+void parsing(t_cub3d *cub3d, t_parsing parsing)
+{
+   
 }

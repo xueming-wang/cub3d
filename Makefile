@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2021/12/15 17:00:10 by xuwang           ###   ########.fr        #
+#    Updated: 2021/12/16 19:29:29 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,37 +15,36 @@ NAME = Cub3D
 
 CC 	= gcc
 
-CFLAGS 	= -Wall -Wextra -Werror
-
-IFLAGS = -I. -I./libft
+IFLAGS = -I./include -I./libft
 
 LFLAGS = -L./libft -lft
 
-SRCS_P	:= exit.c \
-			parsing.c \
-			parsing_map.c \
-			parsing_tex.c \
-			
+CFLAGS 	= -Wall -Wextra -Werror
 
-OBJS_P := $(SRCS_P:%.c=%.o)
+SRCS    := src/parser/parsing_map.c \
+			src/parser/parsing_tex.c \
+			src/parser/parsing.c \
+			src/main.c \
+			src/utils/exit.c
 
-$(NAME): $(OBJS_P) $(OBJS_C)
-	$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(OBJS_P) $(LFLAGS) $(IFLAGS) -o $(NAME)
+OBJS := $(SRCS:%.c=%.o)
 
-all: $(NAME) $(CHECKER) 
+$(NAME): $(OBJS) 
+	$(MAKE) -C ./libft
+	$(CC) $(CFLAGS) $(OBJS) $(IFLAGS) -o $(NAME) $(LFLAGS)
+
+all: $(NAME)
 
 clean:
-	$(MAKE) -C libft clean
-	rm -rf $(OBJS_P)
+		rm -rf $(OBJS)
 
 fclean: clean
-	$(MAKE) -C libft fclean
-	rm -rf $(NAME)
+		rm -rf $(NAME)
 
 re: fclean all
 
-%.o:%.c
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+%.o: %.c
+	$(CC) $(CFLAGS) $(IFLAGS) $< -o $@
 
 .PHONY: all clean fclean re
+	

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/15 19:34:45 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/16 17:14:02 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int parsing_filename(char *av)
 void parsing_file(char *av, t_cub3d *cub3d)
 {
     t_parsing parsing;
-    
+
     ft_bzero(&parsing, sizeof(t_parsing));
     parsing.read = 1;
     if (av)
@@ -37,13 +37,15 @@ void parsing_file(char *av, t_cub3d *cub3d)
     while (parsing.read)
     {
         parsing.read = get_next_line(parsing.fd, &parsing.line);
-        cub3d->data[i++] = ft_strdup(parsing.line);
-        free(parsing.line);    
+        ft_lstadd_back(&cub3d->dataMap, ft_lstnew(ft_strdup(parsing.line)));
+        free(parsing.line);
     }    
     close(parsing.fd);
 }
 
 void parsing(t_cub3d *cub3d, t_parsing parsing)
 {
+  
+
    
 }

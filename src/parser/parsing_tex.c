@@ -6,84 +6,83 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/15 19:43:02 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/16 17:08:34 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
  // 确认 皮肤信息
 
-static int check_espace(char *str)
+ [     aaa     ,cc,bbb       ]
+ sp -> ,
+ [  225aa   ]
+ [,]
+ [  1cc  ]
+ [.]
+ [bbb]
+static int check_nbr(char *str)
 {
     int i;
-    int count;
-
-    i = 0;
-    count = 0;
-    while (str[i] == ' ')
-        i++;
-    while (str[i])
-    {
-        if (str[i] == ' ')
-        {   
-            count++;
-            while(str[i + 1] == ' ')
-                i++;
-        }
-        i++;
-    }
-    if (count > 1)
-        return (0);
-    return (1);
-}
-
-static char **str_to_tab(char *line, int i)
-{
     char **tab;
-    
-    if (i == 1)
-    {
-        if (!check_espace(line))
-            return NULL;
-    }
-    else
-    {
-        if (line)
-            tab = ft_split(line);
-    }
-    return (tab);
-}
-static int check_name(char *tab)
-{   
-    int i;
+    int len;
+    int nbr;
     
     i = 0;
-    if (ft_strncmp(tab[i], "NO", 2) != 0 && ft_strncmp(tab[i], "SO", 2) != 0 && ft_strncmp(tab[i], "WE", 2) != 0
-        ft_strncmp(tab[i], "EA", 2) != 0 && ft_strncmp(tab[i], "F", 1) != 0 && ft_strncmp(tab[i], "C", 1) != 0) 
-        return (0);    
+    tab = ft_split(str, ",");
+    len = sizeof(len)/sizeof(tab[0]);
+    if (len != 3)
+        return (0);
+    while(tab[i])
+    {
+        
+        nbr = ft_atoi(tab[i]);
+        if (nbr < 0 || nbr > 225)
+            return (0);
+        i++;
+    }
+    free(tab);
     return (1);
 }
 
-static int check_file(char *tab)
-{
+static int check_name(char *str, int i)
+{   
+    char **tab;
+    int len;
     int fd;
 
     fd = 0;
-    fd = open(tab, O_RDONLY);
-    if (fd < 0)
+    tab = ft_split(str, ' '); //分成no 和 ./path_to_the_north_texture
+    len = sizeof(len)/sizeof(tab[0]);
+    if (len != 2)
         return (0);
+    if (i == 1)
+    {   
+        if (strcmp(tab[0], "NO") != 0 && strcmp(tab[0], "WE") != 0 && strcmp(tab[0], "SO") != 0 && strcmp(tab[0], "EA") != 0)
+            return (0);
+        fd = open(tab[1], O_RDONLY);
+        if(fd < 0)
+            return (0);
+        close(fd);
+    }
+    else
+    {
+        if (strcmp(tab[0], "F") != 0 && strcmp(tab[0], "C") != 0)
+            return (0);
+        check_nbr(tab[1])
+            return (0);
+    }
     return (1);
 }
-
-int check_texinfo(char *str)
+int check_texinfo(t_cub3d *cub3d, int i)
 {
-    if (!str)
-        return (0);
-    str_to_tab(str, ) == NULL)
-        return (0);
-    if (!check_name(tab[0]))
-        return (0); //确认名字
-    if (!check_file(tab[1]))
-        return (0); //确认文件打开;
-    return (1);
+    while (cub3d->dataMap)
+    {
+       check_name(cub3d)
+        
+       
+
+        
+        free(tab);
+        cub3d->dataMap = cub3d->dataMap->next;
+    }
 }

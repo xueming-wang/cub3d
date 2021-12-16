@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/16 19:41:29 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/16 20:33:05 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void parsing_file(char *av, t_cub3d *cub3d)
     {
         parsing.read = get_next_line(parsing.fd, &parsing.line);
         ft_lstadd_back(&cub3d->dataMap, ft_lstnew(ft_strdup(parsing.line)));
-        free(parsing.line);.
+        free(parsing.line);
     }    
     close(parsing.fd);
 }

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:11:25 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/16 20:01:26 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/16 20:35:17 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void free_list(t_list *list)
 {
     if (list)
-        ft_lstclear(lst, free);
+        ft_lstclear(&list, free);
 }
 
 void _free_(char **tab)
@@ -25,7 +25,7 @@ void _free_(char **tab)
     i = 0;
     while (tab[i])
     {
-        free(tab[i])
+        free(tab[i]);
         i++;
     }
     free(tab);
@@ -38,5 +38,5 @@ void _exit_(char *s1, char *s2, int ret)
         ft_putstr(s1);
     if (s2)
         ft_putstr(s2);
-    return(ret);
+    exit(ret);
 }

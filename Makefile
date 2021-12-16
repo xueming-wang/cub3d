@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2021/12/16 19:29:29 by xuwang           ###   ########.fr        #
+#    Updated: 2021/12/16 20:37:46 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,11 @@ LFLAGS = -L./libft -lft
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-SRCS    := src/parser/parsing_map.c \
-			src/parser/parsing_tex.c \
-			src/parser/parsing.c \
-			src/main.c \
-			src/utils/exit.c
+SRCS    := ./src/parser/parsing_map.c \
+			./src/parser/parsing_tex.c \
+			./src/parser/parsing.c \
+			./src/main.c \
+			./src/utils/exit.c
 
 OBJS := $(SRCS:%.c=%.o)
 
@@ -37,14 +37,16 @@ all: $(NAME)
 
 clean:
 		rm -rf $(OBJS)
+		$(MAKE) -C ./libft clean
 
 fclean: clean
 		rm -rf $(NAME)
+		$(MAKE) -C ./libft fclean
 
 re: fclean all
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(IFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 .PHONY: all clean fclean re
 	

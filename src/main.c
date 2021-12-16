@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:40:09 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/16 19:42:03 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/16 20:33:59 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int ac, char **av)
     
     if (ac != 2)
         _exit_("Error\n", "bad args", FAILURE);
-    cub3d = ft_malloc(sizeof(t_cub3d), 1);
+    cub3d = malloc(sizeof(t_cub3d));
     if (!cub3d)
         _exit_("Error\n", "Malloc Error", FAILURE);
     parsing(av[1], cub3d);

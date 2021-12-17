@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:43:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/05/20 17:39:43 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/17 16:43:01 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static char	*malloc_s(char const *s, char c)
 	return (dst);
 }
 
+#include <stdio.h>
+
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
@@ -58,7 +60,7 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	if (!s)
 		return (NULL);
-	tab = (char **)malloc(sizeof(char *) * count(s, c) + 1);
+	tab = (char **)malloc(sizeof(char *) * (count(s, c) + 1));
 	if (!tab)
 		return (NULL);
 	while (*s)

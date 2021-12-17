@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/17 20:19:51 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/17 20:25:44 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef struct s_parsing
     
 }t_parsing;
 
-typedef struct s_dup {
-    int id;
-    char *name;
-    int n;
-} t_dup;
+// typedef struct s_dup {
+//     int id;
+//     char *name;
+//     int n;
+// } t_dup;
 
 typedef struct s_cub3d
 {

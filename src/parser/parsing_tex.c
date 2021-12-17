@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/17 20:22:08 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/17 20:25:25 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,33 +103,31 @@ static int check_info(char *str)
     return (0);
 }
 
-
-
 static int check_dup(t_list *list)
 {
     int i;
-    int j;
-    const t_dup dup[7] = {{0, "NO", 2}, {1, "SO", 2}, {2, "WE", 2},{3, "EA", 2},
-                        {4, "F", 1}, {5, "C", 1}, {6, NULL, 0}}; 
     static int tab[6] = {0};
     char *str = NULL;
     t_list *tmp = list;
+    
     while (tmp && tmp->content)
     { 
         i = 0;
         str = (char *)tmp->content;
         while (str[i] == ' ' && str[i])
             i++;
-        j = 0;
-        while (dup[j].name != NULL)
-        {
-            if (ft_strncmp(str + i, dup[j].name, dup[j].n) == 0)
-            {
-                tab[dup[j].id]++;
-                break ;
-            }
-            ++j;
-        }
+        if (ft_strncmp(str + i, "NO", 2) == 0)
+            tab[0] += 1;
+        else if (ft_strncmp(str + i, "SO", 2) == 0)
+            tab[1] += 1;
+        else if (ft_strncmp(str + i, "WE", 2) == 0)
+            tab[2] += 1;
+        else if (ft_strncmp(str + i, "EA", 2) == 0)
+            tab[3] += 1;
+        else if (ft_strncmp(str + i, "F", 1) == 0)
+            tab[4] += 1;
+        else if (ft_strncmp(str + i, "C", 1) == 0)
+            tab[5] += 1;
         tmp = tmp->next;
     }
     if (tab[0] > 1 || tab[2] > 1 || tab[3] > 1 || tab[4] > 1 || tab[5] > 1)

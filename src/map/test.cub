@@ -1,6 +1,7 @@
+
                 NO             ./tex/north_texture.xpm
 
-SO ./tex/south_texture.xpm    
+                SO ./tex/south_texture.xpm    
 
 EA  ./tex/east_texture.xpm    
 
@@ -20,8 +21,6 @@ F  220 , 100 ,0
 
 
 
+C   225        ,          30 ,              1
 
 
-
-
-C  225,          30 , 1

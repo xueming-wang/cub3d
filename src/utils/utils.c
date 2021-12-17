@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:26:07 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/17 18:28:42 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/17 20:29:21 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int tab_size(char **src)
 
     while (src != NULL && src[i] != NULL)
         ++i;
-    return i;
+    return (i);
 }

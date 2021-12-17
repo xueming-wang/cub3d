@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:40:09 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/17 16:21:45 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/17 20:29:25 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ int main(int ac, char **av)
     free_list(cub3d->dataMap);
     free(cub3d);
     return (SUCCESS);
+    
 }

@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2021/12/17 19:59:03 by xuwang           ###   ########.fr        #
+#    Updated: 2021/12/18 11:09:53 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,23 +31,27 @@ SRCS    := ./src/parser/parsing_map.c \
 OBJS := $(SRCS:%.c=%.o)
 
 $(NAME): $(OBJS) 
-	$(MAKE) -C ./libft
-	$(CC) $(CFLAGS) $(OBJS) $(IFLAGS) -o $(NAME) $(LFLAGS)
+	@$(MAKE) -C ./libft
+	@echo "libft done!"
+	@$(CC) $(CFLAGS) $(OBJS) $(IFLAGS) -o $(NAME) $(LFLAGS)
+	@echo "done"
 
 all: $(NAME)
-
+	
 clean:
-		rm -rf $(OBJS)
-		$(MAKE) -C ./libft clean
+		@rm -rf $(OBJS)
+		@$(MAKE) -C ./libft clean
+		@echo "Delete>>>>>>"
 
 fclean: clean
-		rm -rf $(NAME)
-		$(MAKE) -C ./libft fclean
-
+		@rm -rf $(NAME)
+		@$(MAKE) -C ./libft fclean
+		@echo "Delete>>>>>>"
 re: fclean all
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@echo "compiler>>>>>>>>"
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 .PHONY: all clean fclean re
 	

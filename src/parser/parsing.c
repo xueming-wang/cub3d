@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/19 17:43:19 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/19 20:33:16 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,40 @@ void parsing_file(char *av, t_cub3d *cub3d)
     close(parsing.fd);
 }
 
+t_list *sepa_map(t_list *list)
+{
+    int i;
+   int tab[6] = {0};
+    // static int index = 0;
+    t_list *sepa;
+    sepa = list;
+    char *str = NULL;
 
+    while (sepa && sepa->content)
+    { 
+        i = 0;
+        str = (char *)sepa->content;
+        while (str[i] == ' ' && str[i])
+            i++;
+        if (ft_strncmp(str + i, "NO", 2) == 0)
+            tab[0] += 1;
+        else if (ft_strncmp(str + i, "SO", 2) == 0)
+            tab[1] += 1;
+        else if (ft_strncmp(str + i, "WE", 2) == 0)
+            tab[2] += 1;
+        else if (ft_strncmp(str + i, "EA", 2) == 0)
+            tab[3] += 1;
+        else if (ft_strncmp(str + i, "F", 1) == 0)
+            tab[4] += 1;
+        else if (ft_strncmp(str + i, "C", 1) == 0)
+            tab[5] += 1;
+        if (tab[0] == 1 && tab[2] == 1 && tab[3] == 1 && tab[4] == 1 && tab[5] == 1)
+            break;
+        sepa = sepa->next;
+        // index++;
+    }
+    return (sepa);
+}
 
 void parsing(char *av, t_cub3d *cub3d)
 {

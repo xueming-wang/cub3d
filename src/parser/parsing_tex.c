@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/17 20:25:25 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/19 17:45:20 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int check_nbr(char *str)
         return (0);
     while (str[i])
     {
-        if (str[i] != ' ' && !ft_isdigit(str[i]))
+        if ((str[i] == ' ' && ft_isdigit(str[i + 1])) || (str[i] != ' ' && !ft_isdigit(str[i])))
             return (0);
         i++;
     }
@@ -38,11 +38,10 @@ static int check_nbr2(char *str)
     if (!check_nbr(str))
         return (0);
     nbr = ft_atoi(str);
-    if (nbr >= 0 && nbr <= 225)
-        return (1);
-    return (0);
+    if (nbr < 0 || nbr > 225)
+        return (0);
+    return (1);
 }
-
 
 static int check_info(char *str)
 {   
@@ -55,11 +54,10 @@ static int check_info(char *str)
     fd = -1;
     while(str[i] == ' ' && str[i])
         i++;
-    //  printf("%s\n", str);
     if (ft_strncmp(str + i, "NO", 2) == 0 || ft_strncmp(str + i, "SO", 2) == 0 ||
         ft_strncmp(str + i, "WE", 2) == 0 || ft_strncmp(str + i, "EA", 2) == 0) 
     {
-        tab = ft_split(str, ' ');//分成no 和 ./path_to_the_north_texture
+        tab = ft_split(str, ' ');
         len = tab_size(tab);
         if (len != 2)
         {
@@ -136,14 +134,22 @@ static int check_dup(t_list *list)
 }
 
 
-void check_texinfo(t_cub3d *cub3d)
+
+void parsing_texinfo(t_cub3d *cub3d)
 {
-    if (!check_dup(cub3d->dataMap))
+    t_list *tmp;
+    t_list  *tmp2 = cub3d->dataMap;
+
+    tmp = sepa_map(tmp2);
+    //printf("%s\n", tmp->content);
+    if (check_dup(cub3d->dataMap) == 0)
         _exit_("Error\n", "Texinfo duplicate!\n", FAILURE);
-    while (cub3d->dataMap)
-    {   
-        if (!check_info(cub3d->dataMap->content))
+    while (tmp2)
+    {  
+        if (!check_info(tmp2->content))
              _exit_("Error\n", "Texinfo is wrong!\n", FAILURE);
-        cub3d->dataMap = cub3d->dataMap->next;
+        if (tmp == tmp2)
+            break;
+        tmp2 = tmp2->next;
     }
 }

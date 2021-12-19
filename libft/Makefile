@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/24 21:41:41 by xuwang            #+#    #+#              #
-#    Updated: 2021/12/15 16:28:42 by xuwang           ###   ########.fr        #
+#    Updated: 2021/12/19 13:00:51 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,18 +68,18 @@ SRCS :=  ft_atoi.c \
 OBJS = $(SRCS:.c=.o)
 
 $(NAME):
-	$(CC) -c $(CFLAGS) $(SRCS)
-	ar rc $(NAME) $(OBJS)
+	@$(CC) -c $(CFLAGS) $(SRCS)
+	@ar rc $(NAME) $(OBJS)
 
 all: $(NAME)
 
 bonus: all
 
 clean:
-	rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

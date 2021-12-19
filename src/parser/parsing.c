@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/17 20:29:04 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/19 17:43:19 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ void parsing_file(char *av, t_cub3d *cub3d)
     close(parsing.fd);
 }
 
+
+
 void parsing(char *av, t_cub3d *cub3d)
 {
     parsing_file(av, cub3d);
-    check_texinfo(cub3d);
-    //check_map();
+    parsing_texinfo(cub3d);
+    parsing_map(cub3d);
 }

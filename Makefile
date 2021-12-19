@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2021/12/18 11:09:53 by xuwang           ###   ########.fr        #
+#    Updated: 2021/12/19 13:10:17 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,17 @@ SRCS    := ./src/parser/parsing_map.c \
 
 OBJS := $(SRCS:%.c=%.o)
 
+NONE			= \033[0m
+CL_LINE			= \033[2K
+
 $(NAME): $(OBJS) 
+	
+	@printf "$(CL_LINE)compiler>>>>>>>> $(NONE)\r"
 	@$(MAKE) -C ./libft
 	@echo "libft done!"
+	@printf "$(CL_LINE)compiler>>>>>>>> $(NONE)\r"
 	@$(CC) $(CFLAGS) $(OBJS) $(IFLAGS) -o $(NAME) $(LFLAGS)
-	@echo "done"
+	@echo "cub3d done!"
 
 all: $(NAME)
 	
@@ -46,11 +52,11 @@ clean:
 fclean: clean
 		@rm -rf $(NAME)
 		@$(MAKE) -C ./libft fclean
-		@echo "Delete>>>>>>"
+		@echo "Delete all>>>>>>"
 re: fclean all
 
 %.o: %.c
-	@echo "compiler>>>>>>>>"
+	
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 .PHONY: all clean fclean re

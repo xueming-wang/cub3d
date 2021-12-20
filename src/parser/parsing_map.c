@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/20 20:52:56 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/20 21:02:17 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,17 +94,20 @@ int check_zero(char **Map)
         while (Map[i][j])
         {
             if (Map[0][j] != '1' && Map[0][j] != ' ')//可能的问题
+            {
+                printf("here1\n");
                 return (0);
+            }
             if (Map[i][j] == '0')
             {
                 if (j > ((int)ft_strlen(Map[i - 1])) || j > ((int)ft_strlen(Map[i + 1])))
                 {
-                    printf("here1\n");
+                    //printf("here1\n");
                     return (0);
                 }
                 if (!check_zero1(Map, i, j) || !check_zero2(Map, i, j))
                 {
-                    printf("here2\n");
+                    //printf("here2\n");
                     return (0);
                 }
             }

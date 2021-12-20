@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/20 16:55:30 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/20 19:06:55 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,34 @@
 //1, 必须被强包围 否则返回错误
 //2. 地图放在文件的最后
 
-int check_zero(char **str, t_parsing parsing, int x, int y)
+
+int check_zero1(char **str, int x, int y)
 {
     int check = 0;
     int j = y;
-    while(str[x][j] && x < parsing.i_len)
+    
+    while(str[x][j])
     {
         if (str[x][j] == '1' )
+        {
             check++;
+            break;
+        }
+        if (str[x][j] == ' ')
+            break;
         j++;
     }
+    
     j = y;
-    while(str[x][j] && x < parsing.i_len)
+    while(str[x][j])
     {
         if (str[x][j] == '1' )
+        {
             check++;
+            break;
+        }
+        if (str[x][j] == ' ')
+            break;
         j--;
     }
     if (check == 2)
@@ -37,21 +50,32 @@ int check_zero(char **str, t_parsing parsing, int x, int y)
     return (0);
 }
 
-int check_zero2(char **str, t_parsing parsing, int x, int y)
+int check_zero2(char **str, int x, int y)
 {
     int check = 0;
     int i = x;
-    while(str[i][y] && x < parsing.i_len)
+    
+    while(str[i][y])
     {
-        if (str[i][y] == '1' )
+        if (str[i][y] == '1')
+        {
             check++;
+            break;
+        }
+        if (str[i][y] == ' ')
+            break;
         i++;
     }
-    i = y;
-    while(str[i][y] && x < parsing.i_len)
+    i = x;
+    while(str[i][y])
     {
         if (str[i][y] == '1' )
+        {
             check++;
+            break;
+        }
+        if (str[i][y] == ' ')
+            break;
         i--;
     }
     if (check == 2)
@@ -59,19 +83,20 @@ int check_zero2(char **str, t_parsing parsing, int x, int y)
     return (0);
 }
 
-int check_zero3(char **Map, t_parsing parsing)
+int check_zero(char **Map)
 {
     int i = 0;
     int j = 0;
     
-    while(Map[i][j])
+    while(Map[i])
     {
         j = 0;
         while (Map[i][j])
         {
             if (Map[i][j] == '0')
             {
-               if (!check_zero(Map, parsing, i, j) || !check_zero2(Map, parsing, i, j))
+                printf("%d, %d\n", i, j);
+                if (!check_zero1(Map, i, j) || !check_zero2(Map, i, j))
                     return (0);
             }
             j++;
@@ -88,7 +113,7 @@ void find_N(char **Map, t_parsing parsing)
 
     i = 0;
     j = 0;
-    while (Map[i][j])
+    while (Map[i])
     {
         j = 0;   
         while (Map[i][j])
@@ -135,10 +160,14 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing)
     tmp1 = sepa_map(cub3d->dataMap);
     tmp1 = tmp1->next;
     cub3d->map = lst_to_tab(tmp1);
+    int i = 0;
+    while(cub3d->map[i])
+    {
+        printf("%s\n", cub3d->map[i]);
+        i++;
+    }
     find_N(cub3d->map, parsing);
-    if (!check_zero3(cub3d->map, parsing))
+    if (!check_zero(cub3d->map))
        _exit_("Error\n", "map is wrong!\n", FAILURE);
-    
- 
     
 }

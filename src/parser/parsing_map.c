@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/20 19:06:55 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/20 20:52:56 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,32 @@
 //2. 地图放在文件的最后
 
 
-int check_zero1(char **str, int x, int y)
+int check_zero1(char **map, int x, int y)
 {
     int check = 0;
     int j = y;
     
-    while(str[x][j])
+    while(map[x][j])
     {
-        if (str[x][j] == '1' )
+        if (map[x][j] == '1' )
         {
             check++;
             break;
         }
-        if (str[x][j] == ' ')
+        if (map[x][j] == ' ')
             break;
         j++;
     }
     
     j = y;
-    while(str[x][j])
+    while(map[x][j])
     {
-        if (str[x][j] == '1' )
+        if (map[x][j] == '1' )
         {
             check++;
             break;
         }
-        if (str[x][j] == ' ')
+        if (map[x][j] == ' ')
             break;
         j--;
     }
@@ -50,31 +50,31 @@ int check_zero1(char **str, int x, int y)
     return (0);
 }
 
-int check_zero2(char **str, int x, int y)
+int check_zero2(char **map, int x, int y)
 {
     int check = 0;
     int i = x;
     
-    while(str[i][y])
+    while(map[i][y])
     {
-        if (str[i][y] == '1')
+        if (map[i][y] == '1')
         {
             check++;
             break;
         }
-        if (str[i][y] == ' ')
+        if (map[i][y] == ' ')
             break;
         i++;
     }
     i = x;
-    while(str[i][y])
+    while(map[i][y])
     {
-        if (str[i][y] == '1' )
+        if (map[i][y] == '1' )
         {
             check++;
             break;
         }
-        if (str[i][y] == ' ')
+        if (map[i][y] == ' ')
             break;
         i--;
     }
@@ -93,11 +93,20 @@ int check_zero(char **Map)
         j = 0;
         while (Map[i][j])
         {
+            if (Map[0][j] != '1' && Map[0][j] != ' ')//可能的问题
+                return (0);
             if (Map[i][j] == '0')
             {
-                printf("%d, %d\n", i, j);
-                if (!check_zero1(Map, i, j) || !check_zero2(Map, i, j))
+                if (j > ((int)ft_strlen(Map[i - 1])) || j > ((int)ft_strlen(Map[i + 1])))
+                {
+                    printf("here1\n");
                     return (0);
+                }
+                if (!check_zero1(Map, i, j) || !check_zero2(Map, i, j))
+                {
+                    printf("here2\n");
+                    return (0);
+                }
             }
             j++;
         }
@@ -106,29 +115,58 @@ int check_zero(char **Map)
     return (1);
 }
 
-void find_N(char **Map, t_parsing parsing)
+int check_N(char **map)   //n被包围
 {
     int i;
     int j;
+    int n;
 
+    n = 0;
     i = 0;
-    j = 0;
-    while (Map[i])
+    while (map[i])
     {
         j = 0;   
-        while (Map[i][j])
+        while (map[i][j])
         {
-            if (Map[i][j] == 'N')
+            if (map[i][j] == 'N')
+                n++;
+            j++;
+        }
+        i++;
+    }
+    if (n != 1)
+    {
+        printf("%d\n", n);
+        return (0);
+    }
+    return (1);
+}
+    
+
+int find_N(char **map, t_parsing parsing)
+{
+    int i;
+    int j;
+    int n;
+    
+    i = 0;
+    n = 0;
+    while (map[i])
+    {
+        j = 0;   
+        while (map[i][j])
+        {
+            if (map[i][j] == 'N' && check_N(map) && check_zero1(map, i, j) && check_zero2(map, i, j))
             {
                 parsing.N_y = j;
                 parsing.N_x = i;
+                return (1);
             }
             j++;
         }
         i++;
     }
-    parsing.i_len = i;
-    parsing.j_len = j;
+    return (0);
 }
 
 char **lst_to_tab(t_list *list)
@@ -166,8 +204,12 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing)
         printf("%s\n", cub3d->map[i]);
         i++;
     }
-    find_N(cub3d->map, parsing);
+    if (!find_N(cub3d->map, parsing))
+        _exit_("Error\n", "N is wrong!\n", FAILURE);
+     if (!check_N(cub3d->map))
+         _exit_("Error\n", "N is wrong!\n", FAILURE);
     if (!check_zero(cub3d->map))
        _exit_("Error\n", "map is wrong!\n", FAILURE);
+   
     
 }

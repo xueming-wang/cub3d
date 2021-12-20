@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/20 18:12:11 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/20 20:18:52 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ typedef struct s_parsing
     char *line;
     int N_x;
     int N_y;
-    int i_len;
-    int j_len;
+    
 }t_parsing;
 
 // typedef struct s_dup {

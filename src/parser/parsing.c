@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/19 20:33:16 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/20 16:54:27 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ void parsing_filename(char *av)
 } 
 
 //获取文件数据到data
-void parsing_file(char *av, t_cub3d *cub3d)
+void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
 {
-    t_parsing parsing;
-   
-    ft_bzero(&parsing, sizeof(t_parsing));
+    //ft_bzero(&parsing, sizeof(t_parsing));
     parsing.read = 1;
     parsing.fd = -1;
     parsing_filename(av);
@@ -54,7 +52,7 @@ t_list *sepa_map(t_list *list)
 {
     int i;
    int tab[6] = {0};
-    // static int index = 0;
+   
     t_list *sepa;
     sepa = list;
     char *str = NULL;
@@ -85,9 +83,9 @@ t_list *sepa_map(t_list *list)
     return (sepa);
 }
 
-void parsing(char *av, t_cub3d *cub3d)
+void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing)
 {
-    parsing_file(av, cub3d);
+    parsing_file(av, cub3d, parsing);
     parsing_texinfo(cub3d);
-    parsing_map(cub3d);
+    parsing_map(cub3d, parsing);
 }

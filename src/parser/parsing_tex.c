@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/19 19:45:41 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 15:06:30 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static int check_info(char *str)
 
     i = 0;
     fd = -1;
+    if (str[0] == '\0')
+        return 1;
     while(str[i] == ' ' && str[i])
         i++;
     if (ft_strncmp(str + i, "NO", 2) == 0 || ft_strncmp(str + i, "SO", 2) == 0 ||
@@ -61,17 +63,17 @@ static int check_info(char *str)
         len = tab_size(tab);
         if (len != 2)
         {
-             _free_(tab);
+             free_tab(tab);
             return (0);
         }
         fd = open(tab[1], O_RDONLY);
         
         if(fd < 0)
         {
-            _free_(tab);
+            free_tab(tab);
             return(0);
         }
-        _free_(tab);
+        free_tab(tab);
         return (1);
     }
     
@@ -81,7 +83,7 @@ static int check_info(char *str)
         len = tab_size(tab);
         if (len != 3)
         {
-            _free_(tab);
+            free_tab(tab);
             return (0);
         }
         i = 0;
@@ -89,15 +91,14 @@ static int check_info(char *str)
         {
             if (!check_nbr2(tab[i]))
             {
-                _free_(tab);
+                free_tab(tab);
                 return (0);
             }
             i++;
         }
-        _free_(tab);
+        free_tab(tab);
         return (1);
     }
-    
     return (0);
 }
 
@@ -153,6 +154,4 @@ void parsing_texinfo(t_cub3d *cub3d)
             break;
         tmp2 = tmp2->next;
     }
-  
-    // printf("here\n");
 }

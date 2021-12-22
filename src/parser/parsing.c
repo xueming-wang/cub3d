@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/20 18:11:48 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 15:07:53 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ void parsing_filename(char *av)
     while (av[i] != '.' )
         i++;
     if(ft_strcmp(av + i, ".cub") != 0)
-    {   
         _exit_("Error\n", "222File Name is Wrong!\n", FAILURE);
-    }
 } 
 
 //获取文件数据到data
 void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
 {
-    //ft_bzero(&parsing, sizeof(t_parsing));
     parsing.read = 1;
     parsing.fd = -1;
     parsing_filename(av);
@@ -41,8 +38,8 @@ void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
     while (parsing.read > 0)
     {
         parsing.read = get_next_line(parsing.fd, &parsing.line);
-        if (parsing.line[0] != '\0')
-            ft_lstadd_back(&cub3d->dataMap, ft_lstnew(ft_strdup(parsing.line)));
+        // if (parsing.line[0] != '\0')
+        ft_lstadd_back(&cub3d->dataMap, ft_lstnew(ft_strdup(parsing.line)));
         free(parsing.line);
     }  
     close(parsing.fd);
@@ -51,14 +48,14 @@ void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
 t_list *sepa_map(t_list *list)
 {
     int i;
-   int tab[6] = {0};
+    int tab[6] = {0};
    
     t_list *sepa;
     sepa = list;
     char *str = NULL;
 
     while (sepa && sepa->content)
-    { 
+    {
         i = 0;
         str = (char *)sepa->content;
         while (str[i] == ' ' && str[i])
@@ -78,7 +75,6 @@ t_list *sepa_map(t_list *list)
         if (tab[0] == 1 && tab[2] == 1 && tab[3] == 1 && tab[4] == 1 && tab[5] == 1)
             break;
         sepa = sepa->next;
-        // index++;
     }
     return (sepa);
 }

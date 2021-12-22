@@ -6,15 +6,11 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/20 21:02:17 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 14:57:49 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-//1, 必须被强包围 否则返回错误
-//2. 地图放在文件的最后
-
 
 int check_zero1(char **map, int x, int y)
 {
@@ -83,31 +79,49 @@ int check_zero2(char **map, int x, int y)
     return (0);
 }
 
-int check_zero(char **Map)
+int first_last_line(char **map)
+{
+    size_t i;
+    int j;
+
+    j = 0;
+    i = tab_size(map) - 1;
+    printf("%zu\n", i);
+    while (map[0][j])
+    {
+        if (map[0][j] != '1' && map[0][j] != ' ')
+            return (0);
+        j++;
+    }
+    j = 0;
+    while (map[i][j])
+    {
+        if (map[i][j] != '1' && map[i][j] != ' ')
+            return (0);
+        j++;
+    }
+    return (1);
+}
+int check_zero(char **map)
 {
     int i = 0;
     int j = 0;
     
-    while(Map[i])
+    if (! first_last_line(map))
+        return (0);
+    while(map[i])
     {
         j = 0;
-        while (Map[i][j])
+        while (map[i][j])
         {
-            if (Map[0][j] != '1' && Map[0][j] != ' ')//可能的问题
+            if (map[i][j] == '0')
             {
-                printf("here1\n");
-                return (0);
-            }
-            if (Map[i][j] == '0')
-            {
-                if (j > ((int)ft_strlen(Map[i - 1])) || j > ((int)ft_strlen(Map[i + 1])))
-                {
-                    //printf("here1\n");
+                if (j > ((int)ft_strlen(map[i - 1])) || j > ((int)ft_strlen(map[i + 1])))
                     return (0);
-                }
-                if (!check_zero1(Map, i, j) || !check_zero2(Map, i, j))
+                //printf("%d, %d\n", i ,j);
+                if (!check_zero1(map, i, j) || !check_zero2(map, i, j))
                 {
-                    //printf("here2\n");
+                    
                     return (0);
                 }
             }
@@ -207,12 +221,11 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing)
         printf("%s\n", cub3d->map[i]);
         i++;
     }
-    if (!find_N(cub3d->map, parsing))
-        _exit_("Error\n", "N is wrong!\n", FAILURE);
-     if (!check_N(cub3d->map))
-         _exit_("Error\n", "N is wrong!\n", FAILURE);
     if (!check_zero(cub3d->map))
        _exit_("Error\n", "map is wrong!\n", FAILURE);
+    if (!find_N(cub3d->map, parsing))
+        _exit_("Error\n", "N is wrong!\n", FAILURE);
+    if (!check_N(cub3d->map))
+         _exit_("Error\n", "N is wrong!\n", FAILURE);
    
-    
 }

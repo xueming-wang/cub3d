@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 15:06:30 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 18:04:08 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ void parsing_texinfo(t_cub3d *cub3d)
     tmp2 = cub3d->dataMap;
     
     tmp = sepa_map(tmp2);
-    //printf("%s\n", tmp->content);
     if (check_dup(tmp2) == 0)
         _exit_("Error\n", "Texinfo duplicate!\n", FAILURE);
     while (tmp2)

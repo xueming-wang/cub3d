@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 14:57:49 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 18:03:31 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,30 @@ int check_zero2(char **map, int x, int y)
     int check = 0;
     int i = x;
     
-    while(map[i][y])
+    while(map[i])  
     {
-        if (map[i][y] == '1')
+        if ((size_t)y < ft_strlen(map[i]) && map[i][y] == '1')
         {
             check++;
             break;
         }
-        if (map[i][y] == ' ')
+        if ((size_t)y < ft_strlen(map[i]) && map[i][y] == ' ' )
             break;
+       
         i++;
     }
     i = x;
-    while(map[i][y])
+    while(map[i])
     {
-        if (map[i][y] == '1' )
+     
+        if ((size_t)y < ft_strlen(map[i]) && map[i][y] == '1' )
         {
             check++;
             break;
         }
-        if (map[i][y] == ' ')
+        if ((size_t)y < ft_strlen(map[i]) && map[i][y] == ' ' )
             break;
+        
         i--;
     }
     if (check == 2)
@@ -86,7 +89,6 @@ int first_last_line(char **map)
 
     j = 0;
     i = tab_size(map) - 1;
-    printf("%zu\n", i);
     while (map[0][j])
     {
         if (map[0][j] != '1' && map[0][j] != ' ')
@@ -107,23 +109,22 @@ int check_zero(char **map)
     int i = 0;
     int j = 0;
     
-    if (! first_last_line(map))
+    if (!first_last_line(map))
         return (0);
     while(map[i])
     {
+        printf("%s\n", map[i]);
         j = 0;
         while (map[i][j])
         {
+            if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ' && map[i][j] != 'N')
+                return (0);
             if (map[i][j] == '0')
             {
                 if (j > ((int)ft_strlen(map[i - 1])) || j > ((int)ft_strlen(map[i + 1])))
                     return (0);
-                //printf("%d, %d\n", i ,j);
                 if (!check_zero1(map, i, j) || !check_zero2(map, i, j))
-                {
-                    
                     return (0);
-                }
             }
             j++;
         }
@@ -152,10 +153,7 @@ int check_N(char **map)   //n被包围
         i++;
     }
     if (n != 1)
-    {
-        printf("%d\n", n);
         return (0);
-    }
     return (1);
 }
     
@@ -215,12 +213,6 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing)
     tmp1 = sepa_map(cub3d->dataMap);
     tmp1 = tmp1->next;
     cub3d->map = lst_to_tab(tmp1);
-    int i = 0;
-    while(cub3d->map[i])
-    {
-        printf("%s\n", cub3d->map[i]);
-        i++;
-    }
     if (!check_zero(cub3d->map))
        _exit_("Error\n", "map is wrong!\n", FAILURE);
     if (!find_N(cub3d->map, parsing))

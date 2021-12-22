@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 15:07:53 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 18:04:23 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ void parsing_filename(char *av)
         i++;
     if(ft_strcmp(av + i, ".cub") != 0)
         _exit_("Error\n", "222File Name is Wrong!\n", FAILURE);
-} 
+}
 
-//获取文件数据到data
 void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
 {
     parsing.read = 1;

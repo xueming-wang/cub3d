@@ -1,5 +1,5 @@
 EA ./tex/east_texture.xpm    
-
+EA
 C 225 , 30 , 1
 
 NO             ./tex/north_texture.xpm

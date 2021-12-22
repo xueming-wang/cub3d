@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 20:36:55 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 20:45:18 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
     close(parsing.fd);
 }
 
-void sepa_map1(t_map *map)
+void text_count(t_map *map)
 {
     while (map->str[map->i] && map->str[map->i] == ' ')
             map->i++;
@@ -70,7 +70,7 @@ t_list *sepa_map(t_list *list)
     {
         map.i = 0;
         map.str = (char *)map.tmp->content;
-        tmp_map1(&map);
+        text_count(&map);
         if (map.tab[0] == 1 && map.tab[2] == 1 && map.tab[3] == 1 && map.tab[4] == 1 && map.tab[5] == 1)
             break;
         map.tmp = map.tmp->next;

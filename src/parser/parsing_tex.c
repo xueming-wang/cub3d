@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 20:38:16 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 20:45:15 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,32 +120,18 @@ static int check_text(char *str)
 
 static int check_dup(t_list *list)
 {
-    int i;
-    int tab[6] = {0};
-    char *str = NULL;
-    t_list *tmp = list;
+    t_map dup;
     
-    while (tmp && tmp->content)
+    ft_bzero(&dup, sizeof(t_map));
+    dup.tmp = list;
+    while (dup.tmp && dup.tmp->content)
     { 
-        i = 0;
-        str = (char *)tmp->content;
-        while (str[i] == ' ' && str[i])
-            i++;
-        if (ft_strncmp(str + i, "NO", 2) == 0)
-            tab[0] += 1;
-        else if (ft_strncmp(str + i, "SO", 2) == 0)
-            tab[1] += 1;
-        else if (ft_strncmp(str + i, "WE", 2) == 0)
-            tab[2] += 1;
-        else if (ft_strncmp(str + i, "EA", 2) == 0)
-            tab[3] += 1;
-        else if (ft_strncmp(str + i, "F", 1) == 0)
-            tab[4] += 1;
-        else if (ft_strncmp(str + i, "C", 1) == 0)
-            tab[5] += 1;
-        tmp = tmp->next;
+        dup.i = 0;
+        dup.str = (char *)dup.tmp->content;
+        text_count(&dup);
+        dup.tmp = dup.tmp->next;
     }
-    if (tab[0] > 1 || tab[2] > 1 || tab[3] > 1 || tab[4] > 1 || tab[5] > 1)
+    if (dup.tab[0] > 1 || dup.tab[2] > 1 || dup.tab[3] > 1 || dup.tab[4] > 1 || dup.tab[5] > 1)
         return (0);
     return (1);
 }

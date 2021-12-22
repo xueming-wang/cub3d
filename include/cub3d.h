@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 20:36:39 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 20:45:27 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing);
 int check_horizont(char **map, int x, int y);
 int check_vertic(char **map, int x, int y);
 int first_last_line(char **map);
+void text_count(t_map *map);
 
 /*exit*/
 void free_tab(char **tab);

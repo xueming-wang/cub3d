@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 18:04:08 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 20:38:16 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ static int check_nbr(char *str)
     }
     return (1);
 }
+
 static int check_nbr2(char *str)
 {
     int nbr;
-
+ 
     if (!check_nbr(str))
         return (0);
     nbr = ft_atoi(str);
@@ -43,7 +44,52 @@ static int check_nbr2(char *str)
     return (1);
 }
 
-static int check_info(char *str)
+static int info_tex(char *str, int len, char **tab, int fd)
+{
+
+    tab = ft_split(str, ' ');
+    len = tab_size(tab);
+    if (len != 2)
+    {
+        free_tab(tab);
+        return (0);
+    }
+    fd = open(tab[1], O_RDONLY);
+    if(fd < 0)
+    {
+        free_tab(tab);
+        return(0);
+    }
+    free_tab(tab);
+    return (1);
+}
+
+static int info_tex2(char *str, int len, char **tab, int i)
+{
+    if (ft_strncmp(str + i + 1, " ", 1) != 0)
+        return (0);
+    tab = ft_split((str + i + 1), ',');
+    len = tab_size(tab);
+    if (len != 3)
+    {
+        free_tab(tab);
+        return (0);
+    }
+    i = 0;
+    while (tab[i])
+    {
+        if (!check_nbr2(tab[i]))
+        {
+            free_tab(tab);
+            return (0);
+        }
+        i++;
+    }
+    free_tab(tab);
+    return (1);
+}
+
+static int check_text(char *str)
 {   
     char **tab = NULL;
     int len;
@@ -52,60 +98,30 @@ static int check_info(char *str)
 
     i = 0;
     fd = -1;
+    len = 0;
     if (str[0] == '\0')
         return 1;
     while(str[i] == ' ' && str[i])
-        i++;
+        i++;;
     if (ft_strncmp(str + i, "NO", 2) == 0 || ft_strncmp(str + i, "SO", 2) == 0 ||
         ft_strncmp(str + i, "WE", 2) == 0 || ft_strncmp(str + i, "EA", 2) == 0) 
     {
-        tab = ft_split(str, ' ');
-        len = tab_size(tab);
-        if (len != 2)
-        {
-             free_tab(tab);
-            return (0);
-        }
-        fd = open(tab[1], O_RDONLY);
-        
-        if(fd < 0)
-        {
-            free_tab(tab);
-            return(0);
-        }
-        free_tab(tab);
-        return (1);
+        if(info_tex(str, len, tab, fd))
+            return(1);
     }
-    
     else if (ft_strncmp(str + i, "F", 1) == 0 || ft_strncmp(str + i, "C", 1) == 0)
     {
-        tab = ft_split((str + i + 1), ',');
-        len = tab_size(tab);
-        if (len != 3)
-        {
-            free_tab(tab);
-            return (0);
-        }
-        i = 0;
-        while (tab[i])
-        {
-            if (!check_nbr2(tab[i]))
-            {
-                free_tab(tab);
-                return (0);
-            }
-            i++;
-        }
-        free_tab(tab);
-        return (1);
+        if(info_tex2(str, len, tab, i))
+            return(1);
     }
     return (0);
 }
 
+
 static int check_dup(t_list *list)
 {
     int i;
-    static int tab[6] = {0};
+    int tab[6] = {0};
     char *str = NULL;
     t_list *tmp = list;
     
@@ -134,8 +150,6 @@ static int check_dup(t_list *list)
     return (1);
 }
 
-
-
 void parsing_texinfo(t_cub3d *cub3d)
 {
     t_list *tmp = NULL;
@@ -147,7 +161,7 @@ void parsing_texinfo(t_cub3d *cub3d)
         _exit_("Error\n", "Texinfo duplicate!\n", FAILURE);
     while (tmp2)
     {  
-        if (!check_info(tmp2->content))
+        if (!check_text(tmp2->content))
              _exit_("Error\n", "Texinfo is wrong!\n", FAILURE);
         if (tmp == tmp2)
             break;

@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2021/12/19 13:10:17 by xuwang           ###   ########.fr        #
+#    Updated: 2021/12/22 20:14:25 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LFLAGS = -L./libft -lft
 CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 SRCS    := ./src/parser/parsing_map.c \
+			./src/parser/parsing_map_part.c \
 			./src/parser/parsing_tex.c \
 			./src/parser/parsing.c \
 			./src/main.c \

@@ -6,13 +6,12 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 18:04:23 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/22 20:36:55 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//确认是不是文件名字
 void parsing_filename(char *av)
 {
     int i;
@@ -37,45 +36,46 @@ void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
     while (parsing.read > 0)
     {
         parsing.read = get_next_line(parsing.fd, &parsing.line);
-        // if (parsing.line[0] != '\0')
         ft_lstadd_back(&cub3d->dataMap, ft_lstnew(ft_strdup(parsing.line)));
         free(parsing.line);
     }  
     close(parsing.fd);
 }
 
+void sepa_map1(t_map *map)
+{
+    while (map->str[map->i] && map->str[map->i] == ' ')
+            map->i++;
+    if (ft_strncmp(map->str + map->i, "NO", 2) == 0)
+        map->tab[0] += 1;
+    else if (ft_strncmp(map->str + map->i, "SO", 2) == 0)
+        map->tab[1] += 1;
+    else if (ft_strncmp(map->str + map->i, "WE", 2) == 0)
+        map->tab[2] += 1;
+    else if (ft_strncmp(map->str + map->i, "EA", 2) == 0)
+        map->tab[3] += 1;
+    else if (ft_strncmp(map->str + map->i, "F", 1) == 0)
+        map->tab[4] += 1;
+    else if (ft_strncmp(map->str + map->i, "C", 1) == 0)
+        map->tab[5] += 1;
+}
+
 t_list *sepa_map(t_list *list)
 {
-    int i;
-    int tab[6] = {0};
-   
-    t_list *sepa;
-    sepa = list;
-    char *str = NULL;
-
-    while (sepa && sepa->content)
+    t_map map;
+    
+    ft_bzero(&map, sizeof(t_map));
+    map.tmp = list;
+    while (map.tmp && map.tmp->content)
     {
-        i = 0;
-        str = (char *)sepa->content;
-        while (str[i] == ' ' && str[i])
-            i++;
-        if (ft_strncmp(str + i, "NO", 2) == 0)
-            tab[0] += 1;
-        else if (ft_strncmp(str + i, "SO", 2) == 0)
-            tab[1] += 1;
-        else if (ft_strncmp(str + i, "WE", 2) == 0)
-            tab[2] += 1;
-        else if (ft_strncmp(str + i, "EA", 2) == 0)
-            tab[3] += 1;
-        else if (ft_strncmp(str + i, "F", 1) == 0)
-            tab[4] += 1;
-        else if (ft_strncmp(str + i, "C", 1) == 0)
-            tab[5] += 1;
-        if (tab[0] == 1 && tab[2] == 1 && tab[3] == 1 && tab[4] == 1 && tab[5] == 1)
+        map.i = 0;
+        map.str = (char *)map.tmp->content;
+        tmp_map1(&map);
+        if (map.tab[0] == 1 && map.tab[2] == 1 && map.tab[3] == 1 && map.tab[4] == 1 && map.tab[5] == 1)
             break;
-        sepa = sepa->next;
+        map.tmp = map.tmp->next;
     }
-    return (sepa);
+    return (map.tmp);
 }
 
 void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing)

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 16:16:55 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 16:44:34 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #define FAILURE 1
 #define SUCCESS 0
 
-#define TEXTURE 4
-#define COULEUR 3
+#define TEXTURE_MAX 4
+#define COULEUR_MAX 3
 
 typedef struct s_parsing
 {
@@ -45,19 +45,19 @@ typedef struct s_parsing_map
 
 }t_parsing_map;
 
-typedef struct s_cub3dmap
+typedef struct s_cmap
 {
     char **map;
-    char *texture[TEXTURE];
-    int *couleur[COULEUR];
-}t_cub3dmap;
+    char *texture[TEXTURE_MAX];
+    int *couleur[COULEUR_MAX];
+    
+}t_map;
 
 typedef struct s_cub3d
 {
     t_list *dataMap;
     char **config;
-    t_cub3dmap cub3d_map;
-    
+    t_map map;
     
 }t_cub3d;
 

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 20:19:45 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 16:24:00 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,9 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing)
     tmp1 = NULL;
     tmp1 = sepa_map(cub3d->dataMap);
     tmp1 = tmp1->next;
-    cub3d->map = lst_to_tab(tmp1);
-    if (!check_zeroinfo(cub3d->map))
-        _exit_("Error\n", "map is wrong!\n", FAILURE);
-    if (!find_N(cub3d->map, parsing))
-        _exit_("Error\n", "N is wrong!\n", FAILURE);
-    if (!check_N(cub3d->map))
-        _exit_("Error\n", "N is wrong!\n", FAILURE);
+    cub3d->config = lst_to_tab(tmp1);
+    if (!check_zeroinfo(cub3d->config))
+        _exit_("Error\n", "map config is wrong!\n", FAILURE);
+    if (!find_N(cub3d->config, parsing))
+        _exit_("Error\n", "N config is wrong!\n", FAILURE);
 }

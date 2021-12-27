@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:13:36 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 15:26:27 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 16:09:22 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int check_dup(t_list *list)
 {
-    t_map dup;
+    t_parsing_map dup;
     
-    ft_bzero(&dup, sizeof(t_map));
+    ft_bzero(&dup, sizeof(t_parsing_map));
     dup.tmp = list;
     while (dup.tmp && dup.tmp->content)
     { 

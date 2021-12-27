@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:40:09 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 14:30:15 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 16:02:23 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int main(int ac, char **av)
     ft_parsing(av[1], cub3d, parsing);
     printf("[PARSING OK]\n");
     free_cub3d(cub3d);
-    return (SUCCESS);
-    
+    return (SUCCESS); 
 }

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/22 20:45:27 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 15:20:46 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int check_horizont(char **map, int x, int y);
 int check_vertic(char **map, int x, int y);
 int first_last_line(char **map);
 void text_count(t_map *map);
+int check_dup(t_list *list);
+int check_text(char *str);
 
 /*exit*/
 void free_tab(char **tab);

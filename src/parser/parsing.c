@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 15:35:19 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 15:36:27 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,4 @@ void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing)
     parsing_file(av, cub3d, parsing);
     parsing_texinfo(cub3d);
     parsing_map(cub3d, parsing);
-    
 }

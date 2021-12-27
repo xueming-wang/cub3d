@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 16:24:00 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 19:41:39 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,37 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing)
         _exit_("Error\n", "map config is wrong!\n", FAILURE);
     if (!find_N(cub3d->config, parsing))
         _exit_("Error\n", "N config is wrong!\n", FAILURE);
+}
+
+void map_after_parser(t_cub3d *cub3d)
+{
+    int len;
+    int i;
+    int j;
+
+    j = 0;
+    i = 0;
+    len = 0;
+    while (cub3d->config[i])
+    {
+        if (cub3d->config[i][0] != '\0')
+            len++;
+        i++;
+    }
+    cub3d->mapinfo.map = malloc(sizeof(char *) * (len + 1));
+    if (!cub3d->mapinfo.map)
+        return ;
+    i = 0;
+    while (cub3d->config[i])
+    {
+        if (cub3d->config[i][0] == '\0')
+            i++;
+        else
+        {
+            cub3d->mapinfo.map[j] = cub3d->config[i];
+            j++;
+            i++;
+        }
+    }
+    cub3d->mapinfo.map[j] = NULL;
 }

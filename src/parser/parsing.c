@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 16:36:47 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 19:42:00 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,8 @@ t_list *sepa_map(t_list *list)
 
 void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing)
 {
-    t_map map;
-    ft_bzero(&map, sizeof(t_map));
-
     parsing_file(av, cub3d, parsing);
     parsing_texinfo(cub3d);
     parsing_map(cub3d, parsing);
-}
+    map_after_parser(cub3d);
+}   

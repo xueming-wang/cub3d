@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 16:42:59 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 18:28:32 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static int check_nbr2(char *str)
 
 static int info_tex(char *str, int len, char **tab, int fd)
 {
+
     tab = ft_split(str, ' ');
     len = tab_size(tab);
     if (len != 2)
@@ -111,7 +112,7 @@ int check_text(char *str)
     else if (ft_strncmp(str + i, "F", 1) == 0 || ft_strncmp(str + i, "C", 1) == 0)
     {
         if(info_tex2(str, len, tab, i))
-            return(2);
+            return(1);
     }
     return (0);
 }

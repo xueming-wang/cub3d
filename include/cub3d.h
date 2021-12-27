@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 16:44:34 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 19:41:15 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ typedef struct s_cmap
 {
     char **map;
     char *texture[TEXTURE_MAX];
-    int *couleur[COULEUR_MAX];
+    char f_couleur[COULEUR_MAX];
+    char c_couleur[COULEUR_MAX];
     
 }t_map;
 
@@ -57,7 +58,7 @@ typedef struct s_cub3d
 {
     t_list *dataMap;
     char **config;
-    t_map map;
+    t_map mapinfo;
     
 }t_cub3d;
 
@@ -70,12 +71,14 @@ void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing);
 int tab_size(char **src);
 t_list *sepa_map(t_list *list);
 void parsing_map(t_cub3d *cub3d, t_parsing parsing);
+//int parsing_map(t_cub3d *cub3d, t_parsing parsing);
 int check_horizont(char **map, int x, int y);
 int check_vertic(char **map, int x, int y);
 int first_last_line(char **map);
 void text_count(t_parsing_map *map);
 int check_dup(t_list *list);
 int check_text(char *str);
+void map_after_parser(t_cub3d *cub3d);
 
 /*exit*/
 void free_tab(char **tab);

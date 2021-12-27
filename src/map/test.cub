@@ -7,7 +7,7 @@ NO             ./tex/north_texture.xpm
 
 SO ./tex/south_texture.xpm 
 
-F 220 , 100 , 0
+   F      220 , 100 , 0
 
 WE  ./tex/west_texture.xpm
 

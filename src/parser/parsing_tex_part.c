@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 18:28:32 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 21:09:41 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ static int check_nbr2(char *str)
     return (1);
 }
 
-static int info_tex(char *str, int len, char **tab, int fd)
+static int info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
 {
-
+    int fd;
+    
     tab = ft_split(str, ' ');
     len = tab_size(tab);
     if (len != 2)
@@ -60,6 +61,7 @@ static int info_tex(char *str, int len, char **tab, int fd)
         free_tab(tab);
         return(0);
     }
+    set_text_path(cub3d, ft_strdup(tab[1]));
     free_tab(tab);
     return (1);
 }
@@ -89,7 +91,7 @@ static int info_tex2(char *str, int len, char **tab, int i)
     return (1);
 }
 
-int check_text(char *str)
+int check_text(char *str, t_cub3d *cub3d)
 {   
     char **tab = NULL;
     int len;
@@ -106,7 +108,7 @@ int check_text(char *str)
     if (ft_strncmp(str + i, "NO", 2) == 0 || ft_strncmp(str + i, "SO", 2) == 0 ||
         ft_strncmp(str + i, "WE", 2) == 0 || ft_strncmp(str + i, "EA", 2) == 0) 
     {
-        if(info_tex(str, len, tab, fd))
+        if(info_tex(str, len, tab, cub3d))
             return(1);
     }
     else if (ft_strncmp(str + i, "F", 1) == 0 || ft_strncmp(str + i, "C", 1) == 0)

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 19:41:15 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 21:10:00 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ typedef struct s_cmap
 {
     char **map;
     char *texture[TEXTURE_MAX];
-    char f_couleur[COULEUR_MAX];
-    char c_couleur[COULEUR_MAX];
+    int f_couleur[COULEUR_MAX];
+    int c_couleur[COULEUR_MAX];
     
 }t_map;
 
@@ -77,8 +77,10 @@ int check_vertic(char **map, int x, int y);
 int first_last_line(char **map);
 void text_count(t_parsing_map *map);
 int check_dup(t_list *list);
-int check_text(char *str);
+int check_text(char *str, t_cub3d *cub3d);
 void map_after_parser(t_cub3d *cub3d);
+void set_couleur(t_cub3d *cub3d, char *str);
+void set_text_path(t_cub3d *cub3d, char *str);
 
 /*exit*/
 void free_tab(char **tab);

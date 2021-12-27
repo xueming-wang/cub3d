@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2021/12/27 15:16:08 by xuwang           ###   ########.fr        #
+#    Updated: 2021/12/27 20:05:07 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS    := ./src/parser/parsing_map.c \
 			./src/parser/parsing.c \
 			./src/main.c \
 			./src/utils/exit.c \
-			./src/utils/utils.c 
+			./src/utils/utils.c \
+			./src/parser/set_mapinfo.c
 
 OBJS := $(SRCS:%.c=%.o)
 

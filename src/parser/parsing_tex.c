@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:13:36 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 18:39:46 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/27 21:09:30 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,13 @@ void parsing_texinfo(t_cub3d *cub3d)
         _exit_("Error\n", "Texinfo duplicate!\n", FAILURE);
     while (tmp2)
     {
-        if (!check_text(tmp2->content))
+        if (check_text(tmp2->content), cub3d)
+        {
+            set_text_path(cub3d, tmp2->content);
+            set_couleur(cub3d, tmp2->content);
+        }
+
+        else 
              _exit_("Error\n", "Texinfo is wrong!\n", FAILURE);
         if (tmp == tmp2)
             break;

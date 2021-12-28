@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:02:43 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 21:04:58 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 14:22:41 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void set_text_path(t_cub3d *cub3d, char *str)
 
     if (i < TEXTURE_MAX)
         cub3d->mapinfo.texture[i++] = str;
-    
+    //printf("%s\n", cub3d->mapinfo.texture[0]);
+  
 }
 
 void set_couleur(t_cub3d *cub3d, char *str)
@@ -75,7 +76,7 @@ void set_couleur(t_cub3d *cub3d, char *str)
         {
             nbr = ft_atoi(tab[j]);
             cub3d->mapinfo.f_couleur[k] = nbr;
-            //printf("%d\n", cub3d->mapinfo.f_couleur[k]);
+            printf("%d\n", cub3d->mapinfo.f_couleur[k]);
             j++;
             k++;
         }
@@ -87,7 +88,7 @@ void set_couleur(t_cub3d *cub3d, char *str)
         {
             nbr = ft_atoi(tab[j]);
             cub3d->mapinfo.c_couleur[k] = nbr;
-            // printf("%d\n", cub3d->mapinfo.c_couleur[k]);
+             printf("%d\n", cub3d->mapinfo.c_couleur[k]);
             j++;
             k++;
         }

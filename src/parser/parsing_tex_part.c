@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 21:09:41 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 14:31:12 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static int check_nbr2(char *str)
 static int info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
 {
     int fd;
+    static int i = 0;
     
     tab = ft_split(str, ' ');
     len = tab_size(tab);
@@ -61,7 +62,15 @@ static int info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
         free_tab(tab);
         return(0);
     }
-    set_text_path(cub3d, ft_strdup(tab[1]));
+    else
+    {
+        if (i < TEXTURE_MAX)
+            set_text_path(cub3d, ft_strdup(tab[1]));
+        printf("%s\n", cub3d->mapinfo.texture[0]);
+         printf("%s\n", cub3d->mapinfo.texture[1]); 
+         printf("%s\n", cub3d->mapinfo.texture[2]);
+          printf("%s\n", cub3d->mapinfo.texture[3]);
+    }
     free_tab(tab);
     return (1);
 }
@@ -108,13 +117,15 @@ int check_text(char *str, t_cub3d *cub3d)
     if (ft_strncmp(str + i, "NO", 2) == 0 || ft_strncmp(str + i, "SO", 2) == 0 ||
         ft_strncmp(str + i, "WE", 2) == 0 || ft_strncmp(str + i, "EA", 2) == 0) 
     {
-        if(info_tex(str, len, tab, cub3d))
-            return(1);
+        if(!info_tex(str, len, tab, cub3d))
+        {
+            return(0);
+        }
     }
     else if (ft_strncmp(str + i, "F", 1) == 0 || ft_strncmp(str + i, "C", 1) == 0)
     {
-        if(info_tex2(str, len, tab, i))
-            return(1);
+        if(!info_tex2(str, len, tab, i))
+            return(0);
     }
-    return (0);
+    return (1);
 }

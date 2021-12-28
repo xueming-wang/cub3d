@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:13:36 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 21:09:30 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 14:39:04 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ int check_dup(t_list *list)
     return (1);
 }
 
+void free_texture(t_cub3d *cub3d)
+{
+    
+            int i = 0;
+           while(i < TEXTURE_MAX)
+           {
+               if (cub3d->mapinfo.texture[i])
+                    free(cub3d->mapinfo.texture[i]);
+                i++;
+           }
+}
 
 void parsing_texinfo(t_cub3d *cub3d)
 {
@@ -42,14 +53,13 @@ void parsing_texinfo(t_cub3d *cub3d)
         _exit_("Error\n", "Texinfo duplicate!\n", FAILURE);
     while (tmp2)
     {
-        if (check_text(tmp2->content), cub3d)
-        {
-            set_text_path(cub3d, tmp2->content);
+        if (check_text((tmp2->content), cub3d)) 
             set_couleur(cub3d, tmp2->content);
-        }
-
         else 
+        {
+            free_texture(cub3d);
              _exit_("Error\n", "Texinfo is wrong!\n", FAILURE);
+        }
         if (tmp == tmp2)
             break;
         tmp2 = tmp2->next;

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 16:58:24 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 17:13:38 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int check_nbr(char *str)
         return (0);
     while (str[i])
     {
-        if ((str[i] == ' ' && ft_isdigit(str[i + 1])) || (str[i] != ' ' && !ft_isdigit(str[i])))
+        if ((str[i] == ' ' && ft_isdigit(str[i + 1])) 
+            || (str[i] != ' ' && !ft_isdigit(str[i])))
             return (0);
         i++;
     }
@@ -106,17 +107,16 @@ int check_text(char *str, t_cub3d *cub3d)
         return 1;
     while(str[i] == ' ' && str[i])
         i++;;
-    if ((ft_strncmp(str + i, "NO", 2) == 0 || ft_strncmp(str + i, "SO", 2) == 0 
-        ||ft_strncmp(str + i, "WE", 2) == 0 || ft_strncmp(str + i, "EA", 2) == 0)
-         && str[i + 2] == ' ')
-    {
-        if(info_tex(str, len, tab, cub3d))
+    if ((ft_strncmp(str + i, "NO", 2) == 0 
+        || ft_strncmp(str + i, "SO", 2) == 0 
+        ||ft_strncmp(str + i, "WE", 2) == 0 
+        || ft_strncmp(str + i, "EA", 2) == 0)
+        && str[i + 2] == ' ' 
+        && info_tex(str, len, tab, cub3d))
             return(1);
-    }
-    else if (ft_strncmp(str + i, "F", 1) == 0 || ft_strncmp(str + i, "C", 1) == 0)
-    {
-        if(info_tex2(str, len, tab, i))
+    else if ((ft_strncmp(str + i, "F", 1) == 0 
+        || ft_strncmp(str + i, "C", 1) == 0) 
+        && info_tex2(str, len, tab, i))
             return(1);
-    }
     return (0);
 }

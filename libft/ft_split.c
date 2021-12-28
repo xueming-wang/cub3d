@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:43:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/17 16:43:01 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 17:23:13 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static char	*malloc_s(char const *s, char c)
 	dst[i] = '\0';
 	return (dst);
 }
-
-#include <stdio.h>
 
 char	**ft_split(char const *s, char c)
 {

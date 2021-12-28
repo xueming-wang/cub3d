@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 16:59:18 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 17:25:26 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void parsing_filename(char *av)
 
     i = 0;
     if(ft_strrchr(av, '.') == NULL)
-        _exit_("Error\n", "11File Name is Wrong!\n", FAILURE);
+        _exit_("Error\n", "File Name is Wrong!\n", FAILURE);
     while (av[i] != '.' )
         i++;
     if(ft_strcmp(av + i, ".cub") != 0)
-        _exit_("Error\n", "222File Name is Wrong!\n", FAILURE);
+        _exit_("Error\n", "File Name is Wrong!\n", FAILURE);
 }
 
 void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)

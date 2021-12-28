@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 14:23:24 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 16:08:05 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ typedef struct s_parsing
     int N_y;
     
 }t_parsing;
+
+typedef struct s_setCouleur
+{
+    int i;
+    char **tab;
+    int nbr;
+    int j;
+    int k;
+    
+}t_SetCouleur;
 
 typedef struct s_parsing_map
 {
@@ -87,5 +97,6 @@ void free_tab(char **tab);
 void free_cub3d(t_cub3d *cub3d);
 void _exit_(char *s1, char *s2, int ret);
 void free_list(t_list *list);
+void free_texture(t_cub3d *cub3d);
 
 #endif 

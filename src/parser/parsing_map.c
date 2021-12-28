@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 20:02:51 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 15:57:08 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int find_N(char **map, t_parsing parsing)
         j = 0;   
         while (map[i][j])
         {
-            if (map[i][j] == 'N' && check_N(map) && check_horizont(map, i, j) && check_vertic(map, i, j))
+            if (map[i][j] == 'N' && check_N(map) && check_horizont(map, i, j) 
+                && check_vertic(map, i, j))
             {
                 parsing.N_y = j;
                 parsing.N_x = i;
@@ -124,8 +125,14 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing)
     tmp1 = tmp1->next;
     cub3d->config = lst_to_tab(tmp1);
     if (!check_zeroinfo(cub3d->config))
+    {
+        free_texture(cub3d);
         _exit_("Error\n", "map config is wrong!\n", FAILURE);
+    }
     if (!find_N(cub3d->config, parsing))
+    {
+        free_texture(cub3d);
         _exit_("Error\n", "N config is wrong!\n", FAILURE);
+    }
 }
 

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 21:03:06 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 15:55:29 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,8 @@ void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing)
     parsing_texinfo(cub3d);
     parsing_map(cub3d, parsing);
     map_after_parser(cub3d);
+    // printf("%s\n", cub3d->mapinfo.texture[0]);
+    // printf("%s\n", cub3d->mapinfo.texture[1]); 
+    // printf("%s\n", cub3d->mapinfo.texture[2]);
+    // printf("%s\n", cub3d->mapinfo.texture[3]);
 }   

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:02:43 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 16:13:02 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 16:50:10 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,20 @@ void map_after_parser(t_cub3d *cub3d)
     cub3d->mapinfo.map[j] = NULL;
 }
 
-void set_text_path(t_cub3d *cub3d, char *str)
+void set_text_path(t_cub3d *cub3d, char *str1, char *str2)
 {
     static int i = 0;
 
-    if (i < TEXTURE_MAX)
-        cub3d->mapinfo.texture[i++] = str;
+    if (i < TEXTURE_MAX && ft_strcmp(str2, "NO") == 0)
+        cub3d->mapinfo.texture[0] = str1;
+    else if (i < TEXTURE_MAX && ft_strcmp(str2, "SO") == 0)
+        cub3d->mapinfo.texture[1] = str1;
+    else if (i < TEXTURE_MAX && ft_strcmp(str2, "WE") == 0)
+        cub3d->mapinfo.texture[2] = str1;
+    else if (i < TEXTURE_MAX && ft_strcmp(str2, "EA") == 0)
+        cub3d->mapinfo.texture[3] = str1;
 }
+
 
 void set_couleur(t_cub3d *cub3d, char *str)
 {

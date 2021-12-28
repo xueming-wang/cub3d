@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 16:08:05 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 16:50:07 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 #define TEXTURE_MAX 4
 #define COULEUR_MAX 3
+
 
 typedef struct s_parsing
 {
@@ -81,7 +82,6 @@ void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing);
 int tab_size(char **src);
 t_list *sepa_map(t_list *list);
 void parsing_map(t_cub3d *cub3d, t_parsing parsing);
-//int parsing_map(t_cub3d *cub3d, t_parsing parsing);
 int check_horizont(char **map, int x, int y);
 int check_vertic(char **map, int x, int y);
 int first_last_line(char **map);
@@ -90,7 +90,7 @@ int check_dup(t_list *list);
 int check_text(char *str, t_cub3d *cub3d);
 void map_after_parser(t_cub3d *cub3d);
 void set_couleur(t_cub3d *cub3d, char *str);
-void set_text_path(t_cub3d *cub3d, char *str);
+void set_text_path(t_cub3d *cub3d, char *str1, char *str2);
 
 /*exit*/
 void free_tab(char **tab);

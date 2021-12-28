@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 15:56:22 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/12/28 16:58:24 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static int check_nbr2(char *str)
 static int info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
 {
     int fd;
-    static int i = 0;
     
     tab = ft_split(str, ' ');
     len = tab_size(tab);
@@ -63,10 +62,7 @@ static int info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
         return(0);
     }
     else
-    {
-        if (i < TEXTURE_MAX)
-            set_text_path(cub3d, ft_strdup(tab[1]));
-    }
+        set_text_path(cub3d, ft_strdup(tab[1]), tab[0]);
     free_tab(tab);
     return (1);
 }
@@ -110,8 +106,9 @@ int check_text(char *str, t_cub3d *cub3d)
         return 1;
     while(str[i] == ' ' && str[i])
         i++;;
-    if (ft_strncmp(str + i, "NO", 2) == 0 || ft_strncmp(str + i, "SO", 2) == 0 ||
-        ft_strncmp(str + i, "WE", 2) == 0 || ft_strncmp(str + i, "EA", 2) == 0) 
+    if ((ft_strncmp(str + i, "NO", 2) == 0 || ft_strncmp(str + i, "SO", 2) == 0 
+        ||ft_strncmp(str + i, "WE", 2) == 0 || ft_strncmp(str + i, "EA", 2) == 0)
+         && str[i + 2] == ' ')
     {
         if(info_tex(str, len, tab, cub3d))
             return(1);

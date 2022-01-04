@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:11:29 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/27 15:19:12 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/01/04 15:42:57 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int check_vertic(char **map, int x, int y)
 
     check = check_vertic_part(map, x, y);
     i = x;
-    while(map[i])
+    //printf("%s\n", map[0]);
+    while(map && map[i] && map[i][0] != '\0') 
     {
         if ((size_t)y < ft_strlen(map[i]) && map[i][y] == '1' )
         {

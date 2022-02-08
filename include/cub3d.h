@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/08 11:37:57 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/08 16:47:17 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@
 #include <string.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "mlx.h"
 
-# define FAILURE 1
-# define SUCCESS 0
+#define FAILURE 1
+#define SUCCESS 0
 
-# define TEXTURE_MAX 4
-# define COULEUR_MAX 3
+#define TEXTURE_MAX 4
+#define COULEUR_MAX 3
 
-# define NAME "Cub3D"
-# define HEIGHT 800;
-# define WIDTH  800;
+#define W_NAME "Cub3D"
+#define W_HEIGHT 800;
+#define W_WIDTH  800;
+#define TEXMAX 
 
 typedef struct s_parsing
 {
@@ -68,13 +70,32 @@ typedef struct s_cmap
     
 }t_map;
 
+typedef struct s_img
+{
+    void	*img_ptr;
+	char	*addr;  
+	int		bpp; //bits_per_pixel
+	int		size;
+	int		endian;
+	int		width;
+	int		height;
+    
+}t_img;
+
 typedef struct s_cub3d
 {
     t_list *dataMap;
     char **config;
     t_map mapinfo;
+    void *mlx;
+    void *win;
+    t_img mlx_img;
+    t_img tex_img[TEXTURE_MAX];
+   // t_player player;
+
     
 }t_cub3d;
+
 
 
 int main(int ac, char **av);
@@ -82,7 +103,7 @@ int main(int ac, char **av);
 /* parsing */
 void parsing_texinfo(t_cub3d *cub3d);
 int first_last_line(char **map);
-void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing);
+void ft_parsing(int ac, char *av, t_cub3d *cub3d);
 int tab_size(char **src);
 t_list *sepa_map(t_list *list);
 void parsing_map(t_cub3d *cub3d, t_parsing parsing);
@@ -96,11 +117,14 @@ void map_after_parser(t_cub3d *cub3d);
 void set_couleur(t_cub3d *cub3d, char *str);
 void set_text_path(t_cub3d *cub3d, char *str1, char *str2);
 
+/* exec */
+void	start_game(t_cub3d *cub3d);
 /*exit*/
 void free_tab(char **tab);
 void free_cub3d(t_cub3d *cub3d);
 void _exit_(char *s1, char *s2, int ret);
 void free_list(t_list *list);
 void free_texture(t_cub3d *cub3d);
+void exit_mlx(char *s1, int ret, t_cub3d *cub3d);
 
 #endif 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:40:09 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 16:43:12 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/08 11:58:42 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 int main(int ac, char **av)
 {
     t_cub3d *cub3d;
-    t_parsing parsing;
     
-    ft_bzero(&parsing, sizeof(t_parsing));
-    if (ac != 2)
-        _exit_("Error\n", "bad args", FAILURE);
     cub3d = ft_calloc(1, sizeof(t_cub3d));
     if (!cub3d)
         _exit_("Error\n", "Malloc Error", FAILURE);

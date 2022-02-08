@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 16:50:07 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/08 11:37:57 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-#define FAILURE 1
-#define SUCCESS 0
+# define FAILURE 1
+# define SUCCESS 0
 
-#define TEXTURE_MAX 4
-#define COULEUR_MAX 3
+# define TEXTURE_MAX 4
+# define COULEUR_MAX 3
 
+# define NAME "Cub3D"
+# define HEIGHT 800;
+# define WIDTH  800;
 
 typedef struct s_parsing
 {
@@ -72,6 +75,7 @@ typedef struct s_cub3d
     t_map mapinfo;
     
 }t_cub3d;
+
 
 int main(int ac, char **av);
 

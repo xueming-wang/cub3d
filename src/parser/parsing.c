@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 17:25:26 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/08 11:59:30 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,13 @@ t_list *sepa_map(t_list *list)
     return (map.tmp);
 }
 
-void ft_parsing(char *av, t_cub3d *cub3d, t_parsing parsing)
+void ft_parsing(int ac, char *av, t_cub3d *cub3d)
 {
+    t_parsing parsing;
+     
+    ft_bzero(&parsing, sizeof(t_parsing));
+    if (ac != 2)
+        _exit_("Error\n", "bad args", FAILURE);
     parsing_file(av, cub3d, parsing);
     parsing_texinfo(cub3d);
     parsing_map(cub3d, parsing);

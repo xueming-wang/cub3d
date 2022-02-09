@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 17:28:16 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 17:44:24 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define NAME "Cub3D"
 # define WIN_HEIGHT 800
 # define WIN_WIDTH  800
+# define PLY_DIR 4
 
 
 typedef struct s_parsing

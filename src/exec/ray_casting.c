@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:17:34 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 15:20:30 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 17:33:23 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void raycasting_init(t_raycast*ray, t_player *player)
 {
      //calculate ray position and direction
     ray->cameraX = 2 * ray->pix / (double)WIN_WIDTH - 1;
-    ray->raydird_x = player.dir_x + player.plane_x * ray->cameraX;
-    ray->raydird_y = player.dir_y + player.plane_y * ray->cameraX;
+    ray->raydird_x = player->dir_x + player->plane_x * ray->cameraX;
+    ray->raydird_y = player->dir_y + player->plane_y * ray->cameraX;
     //which box of the map we're in
-    ray->map_x = (int)player.pos_x;
-    ray->map_y = (int)player.pos_y;
+    ray->map_x = (int)player->pos_x;
+    ray->map_y = (int)player->pos_y;
     
     ray->deltaDist_x = fabs(1 / ray->raydird_x); //绝对值
     ray->deltaDist_y = fabs(1 / ray->raydird_y);
@@ -30,12 +30,12 @@ void raycasting_init(t_raycast*ray, t_player *player)
 
 static void ft_raycasting(t_raycast *ray, t_cub3d *cub3d)
 {
-    raycasting_init(ray, cub3d->player);
-	sideDist_init(ray, cub3d->player);
+    raycasting_init(ray, &cub3d->player);
+	sideDist_init(ray, &cub3d->player);
 	hit_wall(ray, cub3d);
-	set_perpWallDist(ray, cub3d->player);
+	set_perpWallDist(ray, &cub3d->player);
 	set_lineHeight(ray);
-    set_drawinfo(ray, cub3d->player);
+    set_drawinfo(ray, &cub3d->player);
 	drawing();
 }
 

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:03:29 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 15:36:03 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 17:31:52 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ void set_lineHeight(t_raycast *ray)
 void  set_drawinfo(t_raycast *ray, t_player *player)
 {
     ray->draw_start = (-ray->line_height / 2
-			+ ((WIN_HEIGHT / 2) * player.cam_height));
+			+ ((WIN_HEIGHT / 2) * player->cam_height));
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
 	ray->draw_end = (ray->line_height / 2
-			+ ((WIN_HEIGHT / 2) * player.cam_height));
+			+ ((WIN_HEIGHT / 2) * player->cam_height));
 	if (ray->draw_end >= WIN_HEIGHT)
 		ray->draw_end = WIN_HEIGHT;
 }

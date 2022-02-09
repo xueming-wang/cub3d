@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 15:35:18 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 17:28:16 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,13 @@ void set_text_path(t_cub3d *cub3d, char *str1, char *str2);
 
 /* exec */
 void	start_game(t_cub3d *cub3d);
+void player_init(t_cub3d *cub3d);
+void  sideDist_init(t_raycast *ray, t_player *player);
+void hit_wall(t_raycast *ray, t_cub3d *cub3d);
+void  set_perpWallDist(t_raycast *ray, t_player *player);
+void set_lineHeight(t_raycast *ray);
+void  set_drawinfo(t_raycast *ray, t_player *player);
+
 /*exit*/
 void free_tab(char **tab);
 void free_cub3d(t_cub3d *cub3d);

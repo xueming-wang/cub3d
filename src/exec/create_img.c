@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:27:25 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 12:47:12 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 17:29:36 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void	start_game(t_cub3d *cub3d)
 {
 	_window(cub3d);
 	_image(cub3d);
-	player_initialize();//初始化
-	tex_initialize(); //皮肤初始化
-	mlx_hook(cub3d->win, 2, 1L << 0, key_pressing, NULL);   //按键
-	mlx_hook(cub3d->win, 3, 1L << 1, key_releasing, NULL);  //松开
-	mlx_hook(cub3d->win, RED_CROSS, 1L << 2, _window_destroy, NULL); //红色 删除窗口
- 	mlx_loop_hook(cub3d->mlx, _game_loop, NULL);  //程序循环运行
-	mlx_loop(cub3d->mlx);   
+	player_init(cub3d);//初始化
+	// tex_initialize(); //皮肤初始化
+	// mlx_hook(cub3d->win, 2, 1L << 0, key_pressing, NULL);   //按键
+	// mlx_hook(cub3d->win, 3, 1L << 1, key_releasing, NULL);  //松开
+	// mlx_hook(cub3d->win, RED_CROSS, 1L << 2, _window_destroy, NULL); //红色 删除窗口
+ 	// mlx_loop_hook(cub3d->mlx, _game_loop, NULL);  //程序循环运行
+	// mlx_loop(cub3d->mlx);   
 }

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:27:25 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 17:29:36 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:28:08 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ static void	_image(t_cub3d *cub3d)
 	cub3d->mlx_img.addr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size, &img->endian);
 }
 
-static int	_window_destroy(t_cub3d *cub3d)
-{
-	mlx_destroy_window(cub3d->mlx, cub3d->win);
-	exit_mlx(NULL, FAILURE, cub3d);
-	return (1);
-}
+// static int	_window_destroy(t_cub3d *cub3d)
+// {
+// 	mlx_destroy_window(cub3d->mlx, cub3d->win);
+// 	exit_mlx(NULL, FAILURE, cub3d);
+// 	return (1);
+// }
 
-static int	_game_loop(void)
-{
-	do_raycasting();  //射线和案件
-	key_control();
-	return (1);
-}
+// static int	_game_loop(t_cub3d *cub3d)
+// {
+// 	do_raycasting(cub3d);  //射线和案件
+// 	//key_control();
+// 	return (1);
+// }
 
 void	start_game(t_cub3d *cub3d)
 {

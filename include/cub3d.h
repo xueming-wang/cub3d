@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 17:44:24 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 19:24:45 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,16 @@ typedef struct s_raycast
 	double		*zbuffer;
 }t_raycast;
 
+typedef struct s_line
+{
+	int		start;
+	int		end;
+	int		line_x;
+	int		line_y;
+	int		tex_x;
+	int		tex_y;
+}	t_line;
+
 typedef struct s_cub3d
 {
     t_list *dataMap;
@@ -164,6 +174,14 @@ void hit_wall(t_raycast *ray, t_cub3d *cub3d);
 void  set_perpWallDist(t_raycast *ray, t_player *player);
 void set_lineHeight(t_raycast *ray);
 void  set_drawinfo(t_raycast *ray, t_player *player);
+void  color_vertic(t_cub3d *cub3d, t_line *line, unsigned int const color, t_img *img);
+void text_vertic(t_line *line , t_img text, t_raycast *ray, t_img *img);
+void player_move_w(t_cub3d *cub3d, t_player *player);
+void player_move_a(t_cub3d *cub3d, t_player *player);
+void player_move_s(t_cub3d *cub3d, t_player *player);
+void player_move_d(t_cub3d *cub3d, t_player *player);
+void do_raycasting(t_cub3d *cub3d);
+void ft_raycasting(t_raycast *ray, t_cub3d *cub3d);
 
 /*exit*/
 void free_tab(char **tab);

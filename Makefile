@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/08 16:49:55 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/09 12:06:31 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-MLX_DIR = ./mlx
 MLX = libmlx.dylib
 
 SRCS    := ./src/parser/parsing_map.c \
@@ -51,7 +50,9 @@ endif
 $(NAME): $(OBJS) 
 	
 	@printf "$(CL_LINE)compiler>>>>>>>> $(NONE)\r"
-	$(MAKE) -C ./$(MLX_DIR)
+	@$(MAKE) -C ./mlx
+	@echo "mlx done!"
+	@printf "$(CL_LINE)compiler>>>>>>>> $(NONE)\r"
 	@$(MAKE) -C ./libft
 	@echo "libft done!"
 	@printf "$(CL_LINE)compiler>>>>>>>> $(NONE)\r"
@@ -63,6 +64,7 @@ all: $(NAME)
 clean:
 		@rm -rf $(OBJS)
 		@$(MAKE) -C ./libft clean
+		@$(MAKE) -C ./mlx clean
 		@echo "Delete>>>>>>"
 
 ifeq ($(shell uname), Linux)
@@ -73,7 +75,6 @@ endif
 fclean: clean
 		@rm -rf $(NAME)
 		@$(MAKE) -C ./libft fclean
-		$(MAKE) -C ./$(MLX_DIR) clean
 		@echo "Delete all>>>>>>"
 re: fclean all
 

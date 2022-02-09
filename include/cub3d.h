@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/08 16:47:17 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 13:06:32 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 #include <fcntl.h>
 #include "mlx.h"
 
-#define FAILURE 1
-#define SUCCESS 0
+# define FAILURE 1
+# define SUCCESS 0
 
-#define TEXTURE_MAX 4
-#define COULEUR_MAX 3
+# define TEXTURE_MAX 4
+# define COULEUR_MAX 3
 
-#define W_NAME "Cub3D"
-#define W_HEIGHT 800;
-#define W_WIDTH  800;
-#define TEXMAX 
+# define NAME "Cub3D"
+# define WIN_HEIGHT 800;
+# define WIN_WIDTH  800;
+
 
 typedef struct s_parsing
 {
@@ -51,6 +51,22 @@ typedef struct s_setCouleur
     int k;
     
 }t_SetCouleur;
+
+typedef struct s_player
+{
+	char	direction;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	cam_height;
+	double	speed;
+	double	rot_speed;
+    
+}	t_player;
+
 
 typedef struct s_parsing_map
 {
@@ -81,6 +97,29 @@ typedef struct s_img
 	int		height;
     
 }t_img;
+
+typedef struct s_raycast
+{
+	int			pix;
+	double		cameraX;
+	double		raydird_x;  //direction vector
+	double		raydird_y;
+	int			map_x;
+	int			map_y;
+	double		sideDist_x;  //length of ray from current position to next x or y-side
+	double		sideDist_y;
+	double		deltaDist_x; //length of ray from one x or y-side to next x or y-side
+	double		deltaDist_y;
+	double		perPwallDist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	double		*zbuffer;
+}t_raycast;
 
 typedef struct s_cub3d
 {

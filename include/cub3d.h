@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 13:06:32 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 15:35:18 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 # define SUCCESS 0
 
 # define TEXTURE_MAX 4
-# define COULEUR_MAX 3
+# define COLOR_MAX 3
 
 # define NAME "Cub3D"
-# define WIN_HEIGHT 800;
-# define WIN_WIDTH  800;
+# define WIN_HEIGHT 800
+# define WIN_WIDTH  800
 
 
 typedef struct s_parsing
@@ -81,8 +81,8 @@ typedef struct s_cmap
 {
     char **map;
     char *texture[TEXTURE_MAX];
-    int f_couleur[COULEUR_MAX];
-    int c_couleur[COULEUR_MAX];
+    int f_couleur[COLOR_MAX];
+    int c_couleur[COLOR_MAX];
     
 }t_map;
 
@@ -110,11 +110,11 @@ typedef struct s_raycast
 	double		sideDist_y;
 	double		deltaDist_x; //length of ray from one x or y-side to next x or y-side
 	double		deltaDist_y;
-	double		perPwallDist;
+	double		perpWallDist;
 	int			step_x;
 	int			step_y;
-	int			hit;
-	int			side;
+	int			hit;  //was there a wall hit?
+	int			side;  //was a NS or a EW wall hit?
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
@@ -130,9 +130,8 @@ typedef struct s_cub3d
     void *win;
     t_img mlx_img;
     t_img tex_img[TEXTURE_MAX];
-   // t_player player;
+    t_player player;
 
-    
 }t_cub3d;
 
 

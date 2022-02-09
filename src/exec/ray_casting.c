@@ -6,21 +6,14 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:17:34 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 13:13:16 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/09 15:20:30 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void  ft_deltaDist(t_raycast *ray){
-    if (ray->raydird_x == 0)
-        
-    
-}
-
-static void raycasting_init(t_raycast*ray) 
+void raycasting_init(t_raycast*ray, t_player *player) 
 {
-    t_player player;
      //calculate ray position and direction
     ray->cameraX = 2 * ray->pix / (double)WIN_WIDTH - 1;
     ray->raydird_x = player.dir_x + player.plane_x * ray->cameraX;
@@ -31,17 +24,19 @@ static void raycasting_init(t_raycast*ray)
     
     ray->deltaDist_x = fabs(1 / ray->raydird_x); //绝对值
     ray->deltaDist_y = fabs(1 / ray->raydird_y);
+    ray->hit = 0;
 }
 
-static void ft_raycasting(t_raycast *ray)
+
+static void ft_raycasting(t_raycast *ray, t_cub3d *cub3d)
 {
-    raycasting_init(ray);
-	// _side_dist_initialize(ray);
-	// wall_hit(ray);
-	// projection_dist_calculate(ray);
-	// height_line_calculate(ray);
-	// pixel_to_fill_stripe_calculate(ray);
-	// drawing(ray);
+    raycasting_init(ray, cub3d->player);
+	sideDist_init(ray, cub3d->player);
+	hit_wall(ray, cub3d);
+	set_perpWallDist(ray, cub3d->player);
+	set_lineHeight(ray);
+    set_drawinfo(ray, cub3d->player);
+	drawing();
 }
 
 void do_raycasting(t_cub3d *cub3d)
@@ -51,7 +46,7 @@ void do_raycasting(t_cub3d *cub3d)
     ft_bzero(&ray, sizeof(t_raycast));
     while(ray.pix < WIN_WIDTH)
     {
-       ft_raycasting(&ray);
+       ft_raycasting(&ray, cub3d);
        ++ray.pix; 
     }
     mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->mlx_img.img_ptr, 0,0);

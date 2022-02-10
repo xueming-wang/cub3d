@@ -6,12 +6,12 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 15:28:24 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/10 17:21:57 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
 #include "libft.h"
 #include <unistd.h>
@@ -68,8 +68,8 @@ typedef struct s_parsing
     int fd;
     int read;
     char *line;
-    int N_x;
-    int N_y;
+    // int N_x;
+    // int N_y;
     
 }t_parsing;
 
@@ -196,7 +196,7 @@ int first_last_line(char **map);
 void ft_parsing(int ac, char *av, t_cub3d *cub3d);
 int tab_size(char **src);
 t_list *sepa_map(t_list *list);
-void parsing_map(t_cub3d *cub3d, t_parsing parsing);
+void parsing_map(t_cub3d *cub3d);
 int check_horizont(char **map, int x, int y);
 int check_vertic(char **map, int x, int y);
 int first_last_line(char **map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/08 12:02:57 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/10 15:46:26 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int check_N(char **map)
 }
     
 
-int find_N(char **map, t_parsing parsing)
+int find_N(char **map)
 {
     int i;
     int j;
@@ -82,8 +82,8 @@ int find_N(char **map, t_parsing parsing)
             if (map[i][j] == 'N' && check_N(map) && check_horizont(map, i, j) 
                 && check_vertic(map, i, j))
             {
-                parsing.N_y = j;
-                parsing.N_x = i;
+                // parsing.N_y = j;
+                // parsing.N_x = i;
                 return (1);
             }
             j++;
@@ -116,7 +116,7 @@ char **lst_to_tab(t_list *list)
     return (map);
 }
 
-void parsing_map(t_cub3d *cub3d, t_parsing parsing)
+void parsing_map(t_cub3d *cub3d)
 {
     t_list *tmp1;
     
@@ -129,7 +129,7 @@ void parsing_map(t_cub3d *cub3d, t_parsing parsing)
         free_texture(cub3d);
         _exit_("Error\n", "map config is wrong!\n", FAILURE);
     }
-    if (!find_N(cub3d->config, parsing))
+    if (!find_N(cub3d->config))
     {
         free_texture(cub3d);
         _exit_("Error\n", "N config is wrong!\n", FAILURE);

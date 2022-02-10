@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/10 15:11:56 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/10 17:59:06 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ LFLAGS = -L./libft -lft
 CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+MLX_DIR	:= ./mlx
 
 MLX = libmlx.dylib
 
@@ -60,13 +62,14 @@ endif
 $(NAME): $(OBJS) 
 	
 	@printf "$(CL_LINE)compiler>>>>>>>> $(NONE)\r"
-	@$(MAKE) -C ./mlx
+	@$(MAKE) -C $(MLX_DIR)
 	@echo "mlx done!"
 	@printf "$(CL_LINE)compiler>>>>>>>> $(NONE)\r"
 	@$(MAKE) -C ./libft
 	@echo "libft done!"
+	@cp $(MLX_DIR)/$(MLX) .
 	@printf "$(CL_LINE)compiler>>>>>>>> $(NONE)\r"
-	@$(CC) $(CFLAGS) $(OBJS) $(IFLAGS) -o $(NAME) $(LFLAGS) $(MFLAGS)
+	@$(CC) $(CFLAGS) $(OBJS) $(IFLAGS) -o $@ $(LFLAGS) $(MFLAGS)
 	@echo "cub3d done!"
 
 all: $(NAME)
@@ -74,7 +77,6 @@ all: $(NAME)
 clean:
 		@rm -rf $(OBJS)
 		@$(MAKE) -C ./libft clean
-		@$(MAKE) -C ./mlx clean
 		@echo "Delete>>>>>>"
 
 ifeq ($(shell uname), Linux)
@@ -85,6 +87,7 @@ endif
 fclean: clean
 		@rm -rf $(NAME)
 		@$(MAKE) -C ./libft fclean
+		@$(MAKE) -C ./mlx clean
 		@echo "Delete all>>>>>>"
 re: fclean all
 

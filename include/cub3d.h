@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 19:24:45 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/10 13:08:24 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,27 @@
 # define WIN_HEIGHT 800
 # define WIN_WIDTH  800
 # define PLY_DIR 4
+# define KEYMAX 6
 
+# if defined (__APPLE__) && (__MACH__)
+#  define KEY_ESC 53
+#  define KEY_W 13
+#  define KEY_A 0
+#  define KEY_S 1
+#  define KEY_D 2
+#  define KEY_LEFT 123
+#  define KEY_RIGHT 124
+#  define RED_CROSS 17
+# else
+#  define KEY_ESC 65307
+#  define KEY_W 119
+#  define KEY_S 115
+#  define KEY_A 97
+#  define KEY_D 100
+#  define KEY_LEFT 65361
+#  define KEY_RIGHT 65363
+#  define RED_CROSS 33
+# endif
 
 typedef struct s_parsing
 {
@@ -99,6 +119,16 @@ typedef struct s_img
     
 }t_img;
 
+typedef struct s_key
+{
+	int	a;
+	int	w;
+	int	s;
+	int	d;
+	int left;
+	int right;
+}	t_key;
+
 typedef struct s_raycast
 {
 	int			pix;
@@ -142,7 +172,8 @@ typedef struct s_cub3d
     t_img mlx_img;
     t_img tex_img[TEXTURE_MAX];
     t_player player;
-
+	t_key key;
+	
 }t_cub3d;
 
 
@@ -182,6 +213,9 @@ void player_move_s(t_cub3d *cub3d, t_player *player);
 void player_move_d(t_cub3d *cub3d, t_player *player);
 void do_raycasting(t_cub3d *cub3d);
 void ft_raycasting(t_raycast *ray, t_cub3d *cub3d);
+void	drawing(t_raycast *ray, t_cub3d *cub3d);
+int	key_press(int keycode, t_cub3d *cub3d);
+int	key_release(int keycode, t_cub3d *cub3d);
 
 /*exit*/
 void free_tab(char **tab);

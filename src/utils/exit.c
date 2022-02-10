@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:11:25 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/08 16:23:27 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/10 12:24:13 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void exit_mlx(char *s1, int ret, t_cub3d *cub3d)
         ft_putstr(s1);
     mlx_img_clean(cub3d);
     tex_img_clean(cub3d);
+    free_cub3d(cub3d);
     exit(ret);
 }
 

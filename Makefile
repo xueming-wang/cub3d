@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/09 19:26:40 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/10 15:11:56 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,12 +33,17 @@ SRCS    := ./src/parser/parsing_map.c \
 			./src/utils/exit.c \
 			./src/utils/utils.c \
 			./src/parser/set_mapinfo.c \
-			./src/exec/create_img.c \
+			./src/exec/start_game.c \
 			./src/exec/ray_casting.c \
 			./src/exec/draw_tools.c \
 			./src/exec/ray_casting_set.c \
 			./src/exec/player_init.c \
-			./src/exec/player_mov.c
+			./src/exec/player_mov.c \
+			./src/exec/player_rotate.c \
+			./src/exec/text_init.c \
+			./src/exec/drawing.c \
+			./src/exec/key_control.c \
+			
 
 OBJS := $(SRCS:%.c=%.o)
 

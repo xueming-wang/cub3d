@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 13:08:24 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/10 15:28:24 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include "mlx.h"
+#include <math.h>
 
 # define FAILURE 1
 # define SUCCESS 0
@@ -53,6 +54,15 @@
 #  define RED_CROSS 33
 # endif
 
+enum e_path
+{
+	e_NO = 0,
+	e_SO,
+	e_WE,
+	e_EA,
+	e_F,
+	e_C
+};
 typedef struct s_parsing
 {
     int fd;
@@ -102,8 +112,8 @@ typedef struct s_cmap
 {
     char **map;
     char *texture[TEXTURE_MAX];
-    int f_couleur[COLOR_MAX];
-    int c_couleur[COLOR_MAX];
+    unsigned char f_couleur[COLOR_MAX];
+    unsigned char c_couleur[COLOR_MAX];
     
 }t_map;
 
@@ -133,8 +143,8 @@ typedef struct s_raycast
 {
 	int			pix;
 	double		cameraX;
-	double		raydird_x;  //direction vector
-	double		raydird_y;
+	double		raydir_x;  //direction vector
+	double		raydir_y;
 	int			map_x;
 	int			map_y;
 	double		sideDist_x;  //length of ray from current position to next x or y-side
@@ -205,17 +215,22 @@ void hit_wall(t_raycast *ray, t_cub3d *cub3d);
 void  set_perpWallDist(t_raycast *ray, t_player *player);
 void set_lineHeight(t_raycast *ray);
 void  set_drawinfo(t_raycast *ray, t_player *player);
-void  color_vertic(t_cub3d *cub3d, t_line *line, unsigned int const color, t_img *img);
+void  color_vertic(t_line *line, unsigned int const color, t_img *img);
 void text_vertic(t_line *line , t_img text, t_raycast *ray, t_img *img);
 void player_move_w(t_cub3d *cub3d, t_player *player);
 void player_move_a(t_cub3d *cub3d, t_player *player);
 void player_move_s(t_cub3d *cub3d, t_player *player);
 void player_move_d(t_cub3d *cub3d, t_player *player);
-void do_raycasting(t_cub3d *cub3d);
-void ft_raycasting(t_raycast *ray, t_cub3d *cub3d);
+void	player_rotate_left(t_player *player);
+void	player_rotate_right(t_player *player);
+void 	do_raycasting(t_cub3d *cub3d);
 void	drawing(t_raycast *ray, t_cub3d *cub3d);
-int	key_press(int keycode, t_cub3d *cub3d);
-int	key_release(int keycode, t_cub3d *cub3d);
+int		key_press(int keycode, t_cub3d *cub3d);
+int		key_release(int keycode, t_cub3d *cub3d);
+void	key_control(t_cub3d *cub3d);
+void	tex_init(t_cub3d *cub3d);
+void	drawing(t_raycast *ray, t_cub3d *cub3d);
+
 
 /*exit*/
 void free_tab(char **tab);

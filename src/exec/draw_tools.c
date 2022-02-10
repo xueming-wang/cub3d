@@ -6,16 +6,14 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:02:17 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 11:52:10 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/10 15:18:36 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void  color_vertic(t_cub3d *cub3d, t_line *line, unsigned int const color, t_img *img)
+void  color_vertic(t_line *line, unsigned int const color, t_img *img)
 {
-    // t_img *img;
-    // img = &cub3d->mlx_img;
     line->line_y = line->start;
     if (line->line_y >= 0)
     {

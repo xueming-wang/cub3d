@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:03:29 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 17:31:52 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/10 15:08:56 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void  sideDist_init(t_raycast *ray, t_player *player)
 {
-    if (ray->raydird_x < 0)
+    if (ray->raydir_x < 0)
     {
         ray->step_x = -1;
         ray->sideDist_x = (player->pos_x - ray->map_x) * ray->deltaDist_x;
@@ -24,7 +24,7 @@ void  sideDist_init(t_raycast *ray, t_player *player)
         ray->step_x = 1;
         ray->sideDist_x = (ray->map_x + 1.0 - player->pos_x) * ray->deltaDist_x;
     }
-    if (ray->raydird_y < 0)
+    if (ray->raydir_y < 0)
     {
         ray->step_y = -1;
         ray->sideDist_y = (player->pos_y - ray->map_y) * ray->deltaDist_y;
@@ -65,10 +65,10 @@ void  set_perpWallDist(t_raycast *ray, t_player *player)
 {
     if (ray->side == 0 || ray->side == 1)
 		ray->perpWallDist = (ray->map_x - player->pos_x
-				+ (1 - ray->step_x) / 2) / ray->raydird_x;
+				+ (1 - ray->step_x) / 2) / ray->raydir_x;
 	else
 		ray->perpWallDist = (ray->map_y - player->pos_y
-				+ (1 - ray->step_y) / 2) / ray->raydird_y;
+				+ (1 - ray->step_y) / 2) / ray->raydir_y;
 }
 
  //Calculate height of line to draw on screen

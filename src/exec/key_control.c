@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:13:31 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 15:29:25 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 15:52:25 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 int	key_press(int keycode, t_cub3d *cub3d)
 {
 	if (keycode == KEY_ESC)
-		exit_mlx(NULL, FAILURE, cub3d);
+		exit_mlx(NULL, SUCCESS, cub3d);
 	else if (keycode == RED_CROSS)
-		exit_mlx(NULL, FAILURE, cub3d);
+		exit_mlx(NULL, SUCCESS, cub3d);
 	else if (keycode == KEY_W && cub3d->key.w == 0)
 		cub3d->key.w = 1;
 	else if (keycode == KEY_A && cub3d->key.a == 0)

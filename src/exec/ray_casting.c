@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:17:34 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 15:16:40 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 15:56:40 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static void raycasting_init(t_raycast*ray, t_player *player) 
 {
+    printf("r [%p] - p [%c]\n", ray, player->direction);
      //calculate ray position and direction
     ray->cameraX = 2 * ray->pix / (double)WIN_WIDTH - 1;
-    ray->raydir_x = player->dir_x + player->plane_x * ray->cameraX;
-    ray->raydir_y = player->dir_y + player->plane_y * ray->cameraX;
+    ray->raydir_x = player->dir_x + (player->plane_x * ray->cameraX);
+    ray->raydir_y = player->dir_y + (player->plane_y * ray->cameraX);
     //which box of the map we're in
     ray->map_x = (int)player->pos_x;
     ray->map_y = (int)player->pos_y;
@@ -44,8 +45,10 @@ void do_raycasting(t_cub3d *cub3d)
     t_raycast ray;
 
     ft_bzero(&ray, sizeof(t_raycast));
+    ray.pix = 0;
     while(ray.pix < WIN_WIDTH)
     {
+       
        ft_raycasting(&ray, cub3d);
        ++ray.pix; 
     }

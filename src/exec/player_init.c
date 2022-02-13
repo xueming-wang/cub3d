@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:20:51 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/09 18:07:21 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 17:23:07 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 typedef struct s_ply_dir
 {
-    char   dir;
+    char   id;
     double dir_x;
     double	dir_y;
     double	plane_x;
@@ -36,13 +36,15 @@ static void	set_player_dir(t_player *player)
     i = 0;
     while (i < PLY_DIR)
     {
-        if (player->direction == ply_dir[i].dir)
+        if (player->direction == ply_dir[i].id)
         {
+            printf("here\n");
             player->dir_x = ply_dir[i].dir_x;
             player->dir_y = ply_dir[i].dir_y;
             player->plane_x = ply_dir[i].plane_x;
             player->plane_y = ply_dir[i].plane_y;
         }
+        i++;
     }
 }
 
@@ -52,8 +54,9 @@ void player_init(t_cub3d *cub3d)
     
     player = &cub3d->player;
     player->pos_x += 0.5;
-    player->plane_y += 0.5;
+    player->pos_y += 0.5;
     set_player_dir(player);
+    printf("[%c]\n", player->direction);
     player->rot_speed = 0.10;
     player->speed = 0.10;
     player->cam_height = 1.0;

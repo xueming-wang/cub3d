@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:11:25 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 12:24:13 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 14:01:53 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ static void tex_img_clean(t_cub3d *cub3d)
 
 void free_cub3d(t_cub3d *cub3d)
 {
+    mlx_img_clean(cub3d);
+    tex_img_clean(cub3d);
     if (cub3d)
     {
         if (cub3d->dataMap)
             free_list(cub3d->dataMap);
         if (cub3d->config)
             free_tab(cub3d->config);
-        mlx_img_clean(cub3d);
-        tex_img_clean(cub3d);
         free(cub3d);
         cub3d = NULL;
     }

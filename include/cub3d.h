@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 17:21:57 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 14:41:05 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,8 +177,8 @@ typedef struct s_cub3d
     t_list *dataMap;
     char **config;
     t_map mapinfo;
+	void *win;
     void *mlx;
-    void *win;
     t_img mlx_img;
     t_img tex_img[TEXTURE_MAX];
     t_player player;

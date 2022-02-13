@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 17:13:38 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:39:57 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ static int info_tex2(char *str, int len, char **tab, int i)
     return (1);
 }
 
+
+
 int check_text(char *str, t_cub3d *cub3d)
 {   
     char **tab = NULL;
@@ -106,13 +108,9 @@ int check_text(char *str, t_cub3d *cub3d)
     if (str[0] == '\0')
         return 1;
     while(str[i] == ' ' && str[i])
-        i++;;
-    if ((ft_strncmp(str + i, "NO", 2) == 0 
-        || ft_strncmp(str + i, "SO", 2) == 0 
-        ||ft_strncmp(str + i, "WE", 2) == 0 
-        || ft_strncmp(str + i, "EA", 2) == 0)
-        && str[i + 2] == ' ' 
-        && info_tex(str, len, tab, cub3d))
+        i++;
+    if ((ft_strncmp(str + i, "NO", 2) == 0  || ft_strncmp(str + i, "SO", 2) == 0 ||ft_strncmp(str + i, "WE", 2) == 0 
+            || ft_strncmp(str + i, "EA", 2) == 0) && str[i + 2] == ' '  && info_tex(str, len, tab, cub3d))
             return(1);
     else if ((ft_strncmp(str + i, "F", 1) == 0 
         || ft_strncmp(str + i, "C", 1) == 0) 

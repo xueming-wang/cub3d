@@ -6,11 +6,12 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 15:46:26 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 20:07:29 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 
 int check_zeroinfo(char **map)
 {
@@ -41,55 +42,82 @@ int check_zeroinfo(char **map)
     return (1);
 }
 
-int check_N(char **map)
-{
-    int i;
-    int j;
-    int n;
 
-    n = 0;
-    i = 0;
-    while (map[i])
-    {
-        j = 0;   
-        while (map[i][j])
-        {
-            if (map[i][j] == 'N')
-                n++;
-            j++;
-        }
-        i++;
-    }
-    if (n != 1)
-        return (0);
-    return (1);
+// int check_player(char **map)
+// {
+//     int i;
+//     int j;
+//     int n;
+
+//     n = 0;
+//     i = 0;
+//     while (map[i])
+//     {
+//         j = 0;   
+//         while (map[i][j])
+//         {
+//             if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
+//                 n++;
+//             j++;
+//         }
+//         i++;
+//     }
+//     if (n != 1)
+//         return (0);
+//     return (1);
+// }
+    
+static char const	g_ply[] = {
+	'N',
+	'S',
+	'E',
+	'W',
+	'\0'
+};
+
+void	get_player_pos(t_cub3d *cub3d, int pos_x, int  pos_y,  char direction)
+{
+	cub3d->player.pos_x = (double)pos_x;
+	cub3d->player.pos_y = (double)pos_y;
+	cub3d->player.direction = direction;
 }
-    
 
-int find_N(char **map)
+typedef struct s_idx
 {
-    int i;
-    int j;
-    int n;
-    
-    i = 0;
-    n = 0;
-    while (map[i])
+	int	i;
+	int	j;
+	int	k;
+	int	player;
+}	t_idx;
+
+int find_player(t_cub3d *cub3d, char **map)
+{
+    t_idx	idx;
+
+	ft_bzero(&idx, sizeof(t_idx));
+    while (map[idx.i])
     {
-        j = 0;   
-        while (map[i][j])
+        idx.j = 0;   
+        while (map[idx.i][idx.j])
         {
-            if (map[i][j] == 'N' && check_N(map) && check_horizont(map, i, j) 
-                && check_vertic(map, i, j))
+            idx.k = 0;
+            while (g_ply[idx.k] != '\0')
             {
-                // parsing.N_y = j;
-                // parsing.N_x = i;
-                return (1);
+                if (g_ply[idx.k] == map[idx.i][idx.j] && check_horizont(map, idx.i, idx.j) && check_vertic(map, idx.i, idx.j))
+                {
+                    // printf("%d, %d, %c", idx.i, idx.j ,g_ply[idx.k]);
+                    get_player_pos(cub3d, idx.i, idx.j, g_ply[idx.k]);
+                    idx.player++;
+                    break ;
+                }
+                idx.k++;
             }
-            j++;
+            idx.j++;
         }
-        i++;
+        idx.i++;
     }
+    if (idx.player == 1)
+        return (1);
     return (0);
 }
 
@@ -116,6 +144,7 @@ char **lst_to_tab(t_list *list)
     return (map);
 }
 
+
 void parsing_map(t_cub3d *cub3d)
 {
     t_list *tmp1;
@@ -129,7 +158,7 @@ void parsing_map(t_cub3d *cub3d)
         free_texture(cub3d);
         _exit_("Error\n", "map config is wrong!\n", FAILURE);
     }
-    if (!find_N(cub3d->config))
+    if (!find_player(cub3d, cub3d->config))
     {
         free_texture(cub3d);
         _exit_("Error\n", "N config is wrong!\n", FAILURE);

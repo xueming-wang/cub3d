@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:13:36 by xuwang            #+#    #+#             */
-/*   Updated: 2021/12/28 15:39:00 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:04:57 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void free_texture(t_cub3d *cub3d)
         i++;
     }
 }
+
 
 void parsing_texinfo(t_cub3d *cub3d)
 {

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:21:30 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 14:41:48 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/13 14:43:49 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 static void	set_tex(t_img *img, int index, t_cub3d *cub3d)
 {
+	//printf("%s\n", cub3d->mapinfo.texture[index]);
 	img->img_ptr = mlx_xpm_file_to_image(cub3d->mlx, cub3d->mapinfo.texture[index],
 			&img->width, &img->height);
-	if (NULL == img->img_ptr)
+	if (NULL == img->img_ptr) {
 		exit_mlx("path error", FAILURE, cub3d);
+	}
 	img->addr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size, &img->endian);
 }
 

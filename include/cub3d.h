@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 15:27:24 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 17:57:53 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ typedef struct s_parsing_map
 typedef struct s_cmap
 {
     char **map;
-    char *texture[TEXTURE_MAX];
+    char *texture[TEXTURE_MAX];  //图片地址放进去了
     unsigned char f_couleur[COLOR_MAX];
     unsigned char c_couleur[COLOR_MAX];
     
@@ -217,12 +217,12 @@ void set_lineHeight(t_raycast *ray);
 void  set_drawinfo(t_raycast *ray, t_player *player);
 void  color_vertic(t_line *line, unsigned int const color, t_cub3d *cub3d);
 void text_vertic(t_line *line , t_img text, t_raycast *ray, t_cub3d *cub3d);
-void player_move_w(t_cub3d *cub3d, t_player *player);
-void player_move_a(t_cub3d *cub3d, t_player *player);
-void player_move_s(t_cub3d *cub3d, t_player *player);
-void player_move_d(t_cub3d *cub3d, t_player *player);
-void	player_rotate_left(t_player *player);
-void	player_rotate_right(t_player *player);
+void player_move_w(t_cub3d *cub3d);
+void player_move_a(t_cub3d *cub3d);
+void player_move_s(t_cub3d *cub3d);
+void player_move_d(t_cub3d *cub3d);
+void	player_rotate_left(t_cub3d *cub3d);
+void	player_rotate_right(t_cub3d *cub3d);
 void 	do_raycasting(t_cub3d *cub3d);
 void	drawing(t_raycast *ray, t_cub3d *cub3d);
 int		key_press(int keycode, t_cub3d *cub3d);

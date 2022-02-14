@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/13 18:39:57 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 16:13:13 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ static int info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
         free_tab(tab);
         return(0);
     }
-    else
-        set_text_path(cub3d, ft_strdup(tab[1]), tab[0]);
+    set_text_path(cub3d, ft_strdup(tab[1]), tab[0]);
     free_tab(tab);
     return (1);
 }
@@ -110,8 +109,10 @@ int check_text(char *str, t_cub3d *cub3d)
     while(str[i] == ' ' && str[i])
         i++;
     if ((ft_strncmp(str + i, "NO", 2) == 0  || ft_strncmp(str + i, "SO", 2) == 0 ||ft_strncmp(str + i, "WE", 2) == 0 
-            || ft_strncmp(str + i, "EA", 2) == 0) && str[i + 2] == ' '  && info_tex(str, len, tab, cub3d))
+            || ft_strncmp(str + i, "EA", 2) == 0) && str[i + 2] == ' '  && info_tex(str, len, tab, cub3d)){
+              
             return(1);
+    }
     else if ((ft_strncmp(str + i, "F", 1) == 0 
         || ft_strncmp(str + i, "C", 1) == 0) 
         && info_tex2(str, len, tab, i))

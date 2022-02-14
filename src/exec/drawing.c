@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:56:29 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 15:31:07 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 18:05:43 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ static void	draw_side(t_line *line, double wall_x, t_raycast *ray, t_cub3d *cub3
 
 	tex = tex_view_by_player[e_NO];
 	i = 0;
-	while (++i < TEXTURE_MAX)
+	while (++i < TEXTURE_MAX) {
 		if (i == ray->side)
 			tex = tex_view_by_player[i];
+	}
 	tex_x = (int)(wall_x * (double)tex.width);
 	if ((ray->side == 0 || ray->side == 1) && ray->raydir_x > 0)
 		tex_x = tex.width - tex_x - 1;
@@ -70,7 +71,9 @@ void	drawing(t_raycast *ray, t_cub3d *cub3d)
 	else
 		wall_x = cub3d->player.pos_x + ray->perpWallDist * ray->raydir_x;
 	wall_x -= floor(wall_x);
-	if (cub3d->mapinfo.map[ray->map_y][ray->map_x] == '1')
+	if (cub3d->mapinfo.map[ray->map_y][ray->map_x] == '1') 
+	{ 
 		draw_side(&line, wall_x, ray, cub3d);
+	}
 	draw_ceiling_floor(&line, ray, cub3d);
 }

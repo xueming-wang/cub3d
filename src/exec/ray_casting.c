@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:17:34 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 15:08:47 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 18:06:20 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 static void raycasting_init(t_raycast*ray, t_player *player) 
 {
-//    printf("%f\n",  player->dir_x);
-//    printf("%f\n",  player->dir_y);
-//    printf("%f\n",  player->plane_x);
-//    printf("%f\n",  player->plane_y);
 //    calculate ray position and direction
     ray->cameraX = 2 * ray->pix / (double)WIN_WIDTH - 1;
     // printf("here\n");
@@ -36,7 +32,6 @@ static void raycasting_init(t_raycast*ray, t_player *player)
 static void ft_raycasting(t_raycast *ray, t_cub3d *cub3d)
 {
    
-    
     raycasting_init(ray, &cub3d->player);
 	sideDist_init(ray, &cub3d->player);
 	hit_wall(ray, cub3d);

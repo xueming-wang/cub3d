@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:13:31 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 15:07:15 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 17:57:31 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ int	key_release(int keycode, t_cub3d *cub3d)
 void	key_control(t_cub3d *cub3d)
 {
 	if (cub3d->key.w == 1)
-		player_move_w(cub3d, &cub3d->player);
+		player_move_w(cub3d);
 	if (cub3d->key.s == 1)
-		player_move_w(cub3d, &cub3d->player);
+		player_move_w(cub3d);
 	if (cub3d->key.a == 1)
-		player_move_w(cub3d, &cub3d->player);
+		player_move_w(cub3d);
 	if (cub3d->key.d == 1)
-		player_move_w(cub3d, &cub3d->player);
+		player_move_w(cub3d);
 	if (cub3d->key.left == 1)
-		player_rotate_left(&cub3d->player);
+		player_rotate_left(cub3d);
 	if (cub3d->key.right == 1)
-		player_rotate_right(&cub3d->player);
+		player_rotate_right(cub3d);
 	
 }

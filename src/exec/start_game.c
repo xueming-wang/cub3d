@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:27:25 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 13:09:23 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 15:09:15 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	_window(t_cub3d *cub3d)
         exit_mlx("Error: mlx error\n", FAILURE, cub3d);
 	cub3d->win = mlx_new_window(cub3d->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	if (NULL == cub3d->win)
-	{
 		exit_mlx("Error: mlx window error\n", FAILURE, cub3d);
-	}
 }
 
 void	_image(t_cub3d *cub3d)
@@ -37,17 +35,14 @@ void	_image(t_cub3d *cub3d)
 
 int	window_destroy(t_cub3d *cub3d)
 {
-	mlx_destroy_window(cub3d->mlx, cub3d->win);
+	(void)cub3d;
+	// mlx_destroy_window(cub3d->mlx, cub3d->win);
 	exit_mlx(NULL, SUCCESS, cub3d);
 	return (1);
 }
 
 int	_game_loop(t_cub3d *cub3d)
 {
-	// printf("%f\n",  cub3d->player.dir_x);
-    // printf("%f\n",   cub3d->player.dir_y);
-    // printf("%f\n",   cub3d->player.plane_x);
-    // printf("%f\n",   cub3d->player.plane_y);
 	do_raycasting(cub3d);  //射线和案件
 	key_control(cub3d);
 	return (1);
@@ -58,11 +53,6 @@ void	start_game(t_cub3d *cub3d)
 	_window(cub3d);
 	_image(cub3d);
 	player_init(cub3d);//初始化
-	// printf(" !!!!!!!!!!!!!\n");
-	// printf("%f\n",  cub3d->player.dir_x);
-    // printf("%f\n",   cub3d->player.dir_y);
-    // printf("%f\n",   cub3d->player.plane_x);
-    // printf("%f\n",   cub3d->player.plane_y);
 	tex_init(cub3d); //皮肤初始化
 	mlx_hook(cub3d->win, 2, 1L << 0, key_press, cub3d);   //按键
 	mlx_hook(cub3d->win, 3, 1L << 1, key_release, cub3d);  //松开

@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/10 17:59:06 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/14 13:19:59 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ IFLAGS = -I./include -I./libft -I./mlx
 
 LFLAGS = -L./libft -lft
 
-CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
+# CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS 	= -g3 -fsanitize=address
 
 MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 

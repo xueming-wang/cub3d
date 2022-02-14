@@ -6,27 +6,27 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:02:17 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 15:18:36 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 15:28:03 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void  color_vertic(t_line *line, unsigned int const color, t_img *img)
+void  color_vertic(t_line *line, unsigned int const color, t_cub3d *cub3d)
 {
     line->line_y = line->start;
     if (line->line_y >= 0)
     {
         while (line->line_y < line->end)
         {
-            ft_memcpy(img->addr + line->line_y * img->size + line->line_x * (img->bpp / 8), &color,
+            ft_memcpy(cub3d->mlx_img.addr + line->line_y * cub3d->mlx_img.size + line->line_x * (cub3d->mlx_img.bpp / 8), &color,
                     sizeof(unsigned int));
             ++line->line_y;
         }
     }
 }
 
-void text_vertic(t_line *line , t_img text, t_raycast *ray, t_img *img)
+void text_vertic(t_line *line , t_img text, t_raycast *ray, t_cub3d *cub3d)
 {
     double step;
     double tex_pos;
@@ -40,7 +40,7 @@ void text_vertic(t_line *line , t_img text, t_raycast *ray, t_img *img)
          {
              line->tex_y = (int)tex_pos;
              tex_pos += step;
-             ft_memcpy(img->addr + (line->line_y * img->size) * (line->line_y * (img->bpp / 8)),
+             ft_memcpy(cub3d->mlx_img.addr + (line->line_y * cub3d->mlx_img.size) * (line->line_y * (cub3d->mlx_img.bpp / 8)),
                      text.addr + (line->tex_y * text.size) + (line ->tex_x * (text.bpp / 8)), 
                      sizeof(unsigned int));
             ++line->line_y;

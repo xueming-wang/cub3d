@@ -6,12 +6,11 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:13:31 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/13 15:52:25 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 15:07:15 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 
 int	key_press(int keycode, t_cub3d *cub3d)

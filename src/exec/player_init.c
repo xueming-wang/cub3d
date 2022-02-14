@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:20:51 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 13:05:53 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 15:08:56 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,6 @@ void player_init(t_cub3d *cub3d)
     cub3d->player.pos_x += 0.5;
     cub3d->player.pos_y += 0.5;
     set_player_dir(&cub3d->player);
-//     printf("%f\n",   cub3d->player.dir_x);
-//     printf("%f\n",   cub3d->player.dir_y);
-//     printf("%f\n",   cub3d->player.plane_x);
-//     printf("%f\n",   cub3d->player.plane_y);
-//    printf("[%c]\n",  cub3d->player.direction);
      cub3d->player.rot_speed = 0.10;
      cub3d->player.speed = 0.10;
      cub3d->player.cam_height = 1.0;

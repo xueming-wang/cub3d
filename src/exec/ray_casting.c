@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:17:34 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 13:09:00 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 15:08:47 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static void raycasting_init(t_raycast*ray, t_player *player) 
 {
 //    printf("%f\n",  player->dir_x);
-//     printf("%f\n",  player->dir_y);
-//     printf("%f\n",  player->plane_x);
-//     printf("%f\n",  player->plane_y);
-     //calculate ray position and direction
+//    printf("%f\n",  player->dir_y);
+//    printf("%f\n",  player->plane_x);
+//    printf("%f\n",  player->plane_y);
+//    calculate ray position and direction
     ray->cameraX = 2 * ray->pix / (double)WIN_WIDTH - 1;
     // printf("here\n");
     ray->raydir_x = player->dir_x + (player->plane_x * ray->cameraX);
@@ -51,15 +51,8 @@ void do_raycasting(t_cub3d *cub3d)
     t_raycast ray;
 
     ft_bzero(&ray, sizeof(t_raycast));
-    
-     
-    //  printf("%f\n",  cub3d->player.dir_x);
-    // printf("%f\n",   cub3d->player.dir_y);
-    // printf("%f\n",   cub3d->player.plane_x);
-    // printf("%f\n",   cub3d->player.plane_y);
     while(ray.pix < WIN_WIDTH)
     {
-       
        ft_raycasting(&ray, cub3d);
        ++ray.pix; 
     }

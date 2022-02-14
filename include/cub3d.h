@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 12:51:12 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 15:27:24 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,8 +215,8 @@ void hit_wall(t_raycast *ray, t_cub3d *cub3d);
 void  set_perpWallDist(t_raycast *ray, t_player *player);
 void set_lineHeight(t_raycast *ray);
 void  set_drawinfo(t_raycast *ray, t_player *player);
-void  color_vertic(t_line *line, unsigned int const color, t_img *img);
-void text_vertic(t_line *line , t_img text, t_raycast *ray, t_img *img);
+void  color_vertic(t_line *line, unsigned int const color, t_cub3d *cub3d);
+void text_vertic(t_line *line , t_img text, t_raycast *ray, t_cub3d *cub3d);
 void player_move_w(t_cub3d *cub3d, t_player *player);
 void player_move_a(t_cub3d *cub3d, t_player *player);
 void player_move_s(t_cub3d *cub3d, t_player *player);

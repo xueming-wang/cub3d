@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:56:29 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/10 15:29:05 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 15:31:07 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	draw_side(t_line *line, double wall_x, t_raycast *ray, t_cub3d *cub3
 	line->start = ray->draw_start;
 	line->end = ray->draw_end;
 	line->tex_x = tex_x;
-	text_vertic(line , tex, ray, &cub3d->mlx_img);
+	text_vertic(line , tex, ray, cub3d);
 }
 
 uint32_t	create_rgb(int r, int g, int b)
@@ -52,10 +52,10 @@ static void	draw_ceiling_floor(t_line *line, t_raycast *ray, t_cub3d *cub3d)
 
 	line->start = 0;
 	line->end = ray->draw_start;
-	color_vertic(line, create_rgb(c[0], c[1], c[2]), &cub3d->mlx_img);
+	color_vertic(line, create_rgb(c[0], c[1], c[2]), cub3d);
 	line->start = ray->draw_end;
 	line->end = WIN_HEIGHT;
-	color_vertic(line, create_rgb(f[0], c[1], c[2]), &cub3d->mlx_img);
+	color_vertic(line, create_rgb(f[0], f[1], f[2]), cub3d);
 }
 
 void	drawing(t_raycast *ray, t_cub3d *cub3d)

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:20:51 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/13 17:23:07 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 13:05:53 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ static void	set_player_dir(t_player *player)
     {
         if (player->direction == ply_dir[i].id)
         {
-            printf("here\n");
             player->dir_x = ply_dir[i].dir_x;
             player->dir_y = ply_dir[i].dir_y;
             player->plane_x = ply_dir[i].plane_x;
             player->plane_y = ply_dir[i].plane_y;
+            
         }
         i++;
     }
@@ -50,14 +50,15 @@ static void	set_player_dir(t_player *player)
 
 void player_init(t_cub3d *cub3d)
 {
-    t_player *player;
-    
-    player = &cub3d->player;
-    player->pos_x += 0.5;
-    player->pos_y += 0.5;
-    set_player_dir(player);
-    printf("[%c]\n", player->direction);
-    player->rot_speed = 0.10;
-    player->speed = 0.10;
-    player->cam_height = 1.0;
+    cub3d->player.pos_x += 0.5;
+    cub3d->player.pos_y += 0.5;
+    set_player_dir(&cub3d->player);
+//     printf("%f\n",   cub3d->player.dir_x);
+//     printf("%f\n",   cub3d->player.dir_y);
+//     printf("%f\n",   cub3d->player.plane_x);
+//     printf("%f\n",   cub3d->player.plane_y);
+//    printf("[%c]\n",  cub3d->player.direction);
+     cub3d->player.rot_speed = 0.10;
+     cub3d->player.speed = 0.10;
+     cub3d->player.cam_height = 1.0;
 }

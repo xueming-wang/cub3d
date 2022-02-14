@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:17:34 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/13 15:56:40 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/14 13:09:00 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 static void raycasting_init(t_raycast*ray, t_player *player) 
 {
-    printf("r [%p] - p [%c]\n", ray, player->direction);
+//    printf("%f\n",  player->dir_x);
+//     printf("%f\n",  player->dir_y);
+//     printf("%f\n",  player->plane_x);
+//     printf("%f\n",  player->plane_y);
      //calculate ray position and direction
     ray->cameraX = 2 * ray->pix / (double)WIN_WIDTH - 1;
+    // printf("here\n");
     ray->raydir_x = player->dir_x + (player->plane_x * ray->cameraX);
     ray->raydir_y = player->dir_y + (player->plane_y * ray->cameraX);
     //which box of the map we're in
@@ -31,6 +35,8 @@ static void raycasting_init(t_raycast*ray, t_player *player)
 
 static void ft_raycasting(t_raycast *ray, t_cub3d *cub3d)
 {
+   
+    
     raycasting_init(ray, &cub3d->player);
 	sideDist_init(ray, &cub3d->player);
 	hit_wall(ray, cub3d);
@@ -45,7 +51,12 @@ void do_raycasting(t_cub3d *cub3d)
     t_raycast ray;
 
     ft_bzero(&ray, sizeof(t_raycast));
-    ray.pix = 0;
+    
+     
+    //  printf("%f\n",  cub3d->player.dir_x);
+    // printf("%f\n",   cub3d->player.dir_y);
+    // printf("%f\n",   cub3d->player.plane_x);
+    // printf("%f\n",   cub3d->player.plane_y);
     while(ray.pix < WIN_WIDTH)
     {
        

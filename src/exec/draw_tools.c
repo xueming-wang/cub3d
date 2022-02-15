@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:02:17 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 17:42:46 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/15 15:42:59 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,16 @@ void text_vertic(t_line *line , t_img text, t_raycast *ray, t_cub3d *cub3d)
     
     line->line_y = line->start;
     step = (double)text.height / (double)ray->line_height;
-    tex_pos = (line->line_x - WIN_HEIGHT / 2 + ray->line_height / 2) * step;
+    tex_pos = (line->line_y - WIN_HEIGHT / 2 + ray->line_height / 2) * step;
     if (line->line_y >=0)
     {   
          while (line->line_y < line->end)
          {
-            
              line->tex_y = (int)tex_pos;
              tex_pos += step;
-             printf("!!!!!! %s, %d, %d, %d, %d\n", text.addr, line->tex_y, text.size, line->tex_x, text.bpp);
-             ft_memcpy(cub3d->mlx_img.addr + (line->line_y * cub3d->mlx_img.size) * (line->line_y * (cub3d->mlx_img.bpp / 8)),
-                     text.addr + (line->tex_y * text.size) + (line->tex_x * (text.bpp / 8)), sizeof(unsigned int));
+             ft_memcpy(
+                    cub3d->mlx_img.addr + (line->line_y * cub3d->mlx_img.size) + (line->line_x * (cub3d->mlx_img.bpp / 8)),
+                    text.addr + (line->tex_y * text.size) + (line->tex_x * (text.bpp / 8)), sizeof(unsigned int));
             ++line->line_y;
          }
     }

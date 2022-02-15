@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:56:51 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 17:56:38 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/15 15:35:27 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	player_rotate_left(t_cub3d *cub3d)
     
 	old_dir_x = cub3d->player.dir_x;
 	old_plane_x = cub3d->player.plane_x;
-	cub3d->player.dir_x = cub3d->player.dir_x * cos(-cub3d->player.rot_speed)
+	cub3d->player.dir_x = cub3d->player.dir_x * cos(-cub3d->player.rot_speed) 
 		- cub3d->player.dir_y * sin(-cub3d->player.rot_speed);
 	cub3d->player.dir_y = old_dir_x * sin(-cub3d->player.rot_speed)
 		+ cub3d->player.dir_y * cos(-cub3d->player.rot_speed);

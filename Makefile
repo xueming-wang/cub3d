@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/14 13:19:59 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/15 15:55:59 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ all: $(NAME)
 	
 clean:
 		@rm -rf $(OBJS)
+		@rm -rf $(MLX)
 		@$(MAKE) -C ./libft clean
 		@echo "Delete>>>>>>"
 

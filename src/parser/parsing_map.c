@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/13 20:07:29 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/15 13:53:01 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int check_zeroinfo(char **map)
         j = 0;
         while (map[i][j])
         {
-            if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ' && map[i][j] != 'N')
+            if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ' && map[i][j] != 'N'
+                && map[i][j] != 'S' && map[i][j] != 'W'  && map[i][j] != 'E')
                 return (0);
             if (map[i][j] == '0')
             {
@@ -161,7 +162,7 @@ void parsing_map(t_cub3d *cub3d)
     if (!find_player(cub3d, cub3d->config))
     {
         free_texture(cub3d);
-        _exit_("Error\n", "N config is wrong!\n", FAILURE);
+        _exit_("Error\n", "player config is wrong!\n", FAILURE);
     }
 }
 

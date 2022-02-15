@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:56:29 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 18:05:43 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/15 15:10:44 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	draw_ceiling_floor(t_line *line, t_raycast *ray, t_cub3d *cub3d)
 	unsigned char const	*c = cub3d->mapinfo.c_couleur;
 	unsigned char const	*f = cub3d->mapinfo.f_couleur;
 
+
 	line->start = 0;
 	line->end = ray->draw_start;
 	color_vertic(line, create_rgb(c[0], c[1], c[2]), cub3d);
@@ -75,5 +76,5 @@ void	drawing(t_raycast *ray, t_cub3d *cub3d)
 	{ 
 		draw_side(&line, wall_x, ray, cub3d);
 	}
-	draw_ceiling_floor(&line, ray, cub3d);
+	 draw_ceiling_floor(&line, ray, cub3d);
 }

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:03:29 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/15 15:28:49 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/15 16:03:36 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void hit_wall(t_raycast *ray, t_cub3d *cub3d)
         {
             ray->sideDist_x += ray->deltaDist_x;
             ray->map_x +=  ray->step_x;
-            if (ray->step_x== 1)
+            if (ray->step_x == 1)
 			    ray->side = e_NO;
 		    else if (ray->step_x == -1)
 				ray->side = e_SO;
@@ -59,7 +59,6 @@ void hit_wall(t_raycast *ray, t_cub3d *cub3d)
 			else if (ray->step_y == -1)
 				ray->side = e_EA;
         }
-        
         if(cub3d->mapinfo.map[ray->map_y][ray->map_x] == '1') 
         {
             ray->hit = 1;
@@ -71,7 +70,8 @@ void hit_wall(t_raycast *ray, t_cub3d *cub3d)
 //This is the shortest distance from the point where the wall is
 void  set_perpWallDist(t_raycast *ray, t_player *player)
 {
-    if (ray->side == 0 || ray->side == 1) {
+    if (ray->side == 0 || ray->side == 1) 
+    {
 		ray->perpWallDist = (ray->map_x - player->pos_x + (1 - ray->step_x) / 2) / ray->raydir_x;
     }
 	else

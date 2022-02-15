@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:03:29 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/15 17:29:20 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/15 19:43:02 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ void hit_wall(t_raycast *ray, t_cub3d *cub3d)
 			else if (ray->step_y == -1)
 				ray->side = e_EA;
         }
-        if(ray->map_y <= ray->map_x && cub3d->mapinfo.map[ray->map_y][ray->map_x] == '1') 
-        {
+        if(cub3d->mapinfo.map[ray->map_y][ray->map_x] == '1') 
             ray->hit = 1;
-        }
     }
 }
 

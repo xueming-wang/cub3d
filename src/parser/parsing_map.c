@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/15 13:53:01 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/16 12:35:28 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,30 +43,6 @@ int check_zeroinfo(char **map)
     return (1);
 }
 
-
-// int check_player(char **map)
-// {
-//     int i;
-//     int j;
-//     int n;
-
-//     n = 0;
-//     i = 0;
-//     while (map[i])
-//     {
-//         j = 0;   
-//         while (map[i][j])
-//         {
-//             if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
-//                 n++;
-//             j++;
-//         }
-//         i++;
-//     }
-//     if (n != 1)
-//         return (0);
-//     return (1);
-// }
     
 static char const	g_ply[] = {
 	'N',
@@ -106,8 +82,7 @@ int find_player(t_cub3d *cub3d, char **map)
             {
                 if (g_ply[idx.k] == map[idx.i][idx.j] && check_horizont(map, idx.i, idx.j) && check_vertic(map, idx.i, idx.j))
                 {
-                    // printf("%d, %d, %c", idx.i, idx.j ,g_ply[idx.k]);
-                    get_player_pos(cub3d, idx.i, idx.j, g_ply[idx.k]);
+                    get_player_pos(cub3d, idx.j, idx.i, g_ply[idx.k]);
                     idx.player++;
                     break ;
                 }

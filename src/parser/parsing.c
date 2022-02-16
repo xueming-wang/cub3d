@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/15 16:59:14 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/16 14:37:18 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,4 @@ void ft_parsing(int ac, char *av, t_cub3d *cub3d)
     parsing_texinfo(cub3d);
     parsing_map(cub3d);
     map_after_parser(cub3d);
-    int i = 0;
-    while (cub3d->mapinfo.map[i])
-    {
-        int j = 0;
-        while (cub3d->mapinfo.map[i][j])
-        {
-            printf("%c", cub3d->mapinfo.map[i][j]);
-            j++;
-        }
-         printf("\n");
-        i++;
-    }
 }   

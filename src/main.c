@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:40:09 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 12:39:52 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/16 14:38:28 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int main(int ac, char **av)
 {
     t_cub3d *cub3d;
-    
     
     cub3d = ft_calloc(1, sizeof(t_cub3d));
     if (!cub3d)

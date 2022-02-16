@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:26:07 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/16 13:06:38 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/16 14:38:22 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,21 @@ int check_c(char c)
     if (c != '0' && c != '1' && c != ' ' && c != 'N' && c != 'S' && c != 'W'  && c != 'E')
         return (0);
     return (1);
+}
+
+void mlx_img_clean (t_cub3d *cub3d)
+{
+    if (cub3d->mlx_img.img_ptr != NULL)
+        mlx_destroy_image(cub3d->mlx, cub3d->mlx_img.img_ptr);
+}
+
+void tex_img_clean(t_cub3d *cub3d)
+{
+    int i = 0;
+    while(i < TEXTURE_MAX)
+    {
+        if(cub3d->tex_img[i].img_ptr != NULL)
+            mlx_destroy_image(cub3d->mlx, cub3d->tex_img[i].img_ptr);
+        i++;
+    }
 }

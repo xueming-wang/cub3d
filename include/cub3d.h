@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 17:57:53 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/16 13:25:19 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,22 @@ enum e_path
 	e_F,
 	e_C
 };
+
+
 typedef struct s_parsing
 {
     int fd;
     int read;
-    char *line;
-    // int N_x;
-    // int N_y;
-    
+    char *line;    
 }t_parsing;
+
+typedef struct s_idx
+{
+	int	i;
+	int	j;
+	int	k;
+	int	player;
+}	t_idx;
 
 typedef struct s_setCouleur
 {
@@ -206,6 +213,8 @@ int check_text(char *str, t_cub3d *cub3d);
 void map_after_parser(t_cub3d *cub3d);
 void set_couleur(t_cub3d *cub3d, char *str);
 void set_text_path(t_cub3d *cub3d, char *str1, char *str2);
+char **lst_to_tab(t_list *list);
+int check_c(char c);
 
 /* exec */
 void	start_game(t_cub3d *cub3d);

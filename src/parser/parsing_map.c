@@ -6,12 +6,19 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/16 12:35:28 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/16 13:12:02 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+char const	g_ply[] = {
+	'N',
+	'S',
+	'E',
+	'W',
+	'\0'
+};
 
 int check_zeroinfo(char **map)
 {
@@ -26,8 +33,7 @@ int check_zeroinfo(char **map)
         j = 0;
         while (map[i][j])
         {
-            if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ' && map[i][j] != 'N'
-                && map[i][j] != 'S' && map[i][j] != 'W'  && map[i][j] != 'E')
+            if (check_c(map[i][j]) == 0)
                 return (0);
             if (map[i][j] == '0')
             {
@@ -43,15 +49,6 @@ int check_zeroinfo(char **map)
     return (1);
 }
 
-    
-static char const	g_ply[] = {
-	'N',
-	'S',
-	'E',
-	'W',
-	'\0'
-};
-
 void	get_player_pos(t_cub3d *cub3d, int pos_x, int  pos_y,  char direction)
 {
 	cub3d->player.pos_x = (double)pos_x;
@@ -59,13 +56,6 @@ void	get_player_pos(t_cub3d *cub3d, int pos_x, int  pos_y,  char direction)
 	cub3d->player.direction = direction;
 }
 
-typedef struct s_idx
-{
-	int	i;
-	int	j;
-	int	k;
-	int	player;
-}	t_idx;
 
 int find_player(t_cub3d *cub3d, char **map)
 {
@@ -84,7 +74,6 @@ int find_player(t_cub3d *cub3d, char **map)
                 {
                     get_player_pos(cub3d, idx.j, idx.i, g_ply[idx.k]);
                     idx.player++;
-                    break ;
                 }
                 idx.k++;
             }
@@ -96,30 +85,6 @@ int find_player(t_cub3d *cub3d, char **map)
         return (1);
     return (0);
 }
-
-char **lst_to_tab(t_list *list)
-{
-    char **map;
-    int len;
-    int i;
-    t_list *tmp;
-    
-    i = 0;
-    len = ft_lstsize(list);
-    map = malloc(sizeof(char *) * (len + 1));
-    if (!map)
-        return (NULL);
-    tmp = list;
-    while (tmp && i < len)
-    {
-        map[i] = ft_strdup((char *)tmp->content);
-        tmp = tmp->next;
-        i++;   
-    } 
-    map[i] = NULL;
-    return (map);
-}
-
 
 void parsing_map(t_cub3d *cub3d)
 {

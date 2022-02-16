@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:27:25 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/15 17:04:13 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/16 13:25:54 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	_image(t_cub3d *cub3d)
 int	window_destroy(t_cub3d *cub3d)
 {
 	(void)cub3d;
-	 mlx_destroy_window(cub3d->mlx, cub3d->win);
+	mlx_destroy_window(cub3d->mlx, cub3d->win);
 	exit_mlx(NULL, SUCCESS, cub3d);
 	return (1);
 }

@@ -3,23 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
+#    By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/15 15:55:59 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/18 16:55:33 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Cub3D
 
-CC 	= gcc
+CC 	= clang
 
 IFLAGS = -I./include -I./libft -I./mlx
 
 LFLAGS = -L./libft -lft
 
-# CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
-CFLAGS 	= -g3 -fsanitize=address
+CFLAGS 	= -Wall -Wextra -Werror
+#CFLAGS 	= -g3 -fsanitize=address
 
 MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
@@ -54,8 +54,8 @@ NONE			= \033[0m
 CL_LINE			= \033[2K
 
 ifeq ($(shell uname), Linux)
-$(NAME): IFLAGS = -I. -I./libft -I./mlx_linux
-$(NAME): MFLAGS	= -L./mlx_linux -lmlx_Linux -lXext -lX11
+$(NAME): IFLAGS = -I./include -I./libft -I./mlx_linux
+$(NAME): MFLAGS	= -L./mlx_linux -lmlx_Linux -lXext -lX11 -lm
 $(NAME): MLX_DIR = ./mlx_linux
 $(NAME): MLX = libmlx.a
 endif
@@ -87,10 +87,12 @@ fclean: MLX = libmlx.a
 endif
 
 fclean: clean
-		@rm -rf $(NAME)
 		@$(MAKE) -C ./libft fclean
-		@$(MAKE) -C ./mlx clean
+		@$(MAKE) -C $(MLX_DIR) clean >/dev/null
+		@rm -rf $(MLX)
+		@rm -rf $(NAME)
 		@echo "Delete all>>>>>>"
+		
 re: fclean all
 
 %.o: %.c

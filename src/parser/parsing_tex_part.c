@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_tex_part.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/14 16:13:13 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/18 16:20:51 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,9 @@ int check_text(char *str, t_cub3d *cub3d)
 {   
     char **tab = NULL;
     int len;
-    int fd;
     int i;
 
     i = 0;
-    fd = -1;
     len = 0;
     if (str[0] == '\0')
         return 1;

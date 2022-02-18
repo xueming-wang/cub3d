@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/16 13:25:19 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/18 16:08:52 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <fcntl.h>
 #include "mlx.h"
 #include <math.h>
+#include <stdint.h>
 
 # define FAILURE 1
 # define SUCCESS 0
@@ -181,6 +182,7 @@ typedef struct s_line
 
 typedef struct s_cub3d
 {
+	t_SetCouleur set_couleur;
     t_list *dataMap;
     char **config;
     t_map mapinfo;
@@ -215,6 +217,8 @@ void set_couleur(t_cub3d *cub3d, char *str);
 void set_text_path(t_cub3d *cub3d, char *str1, char *str2);
 char **lst_to_tab(t_list *list);
 int check_c(char c);
+void mlx_img_clean (t_cub3d *cub3d);
+void tex_img_clean(t_cub3d *cub3d);
 
 /* exec */
 void	start_game(t_cub3d *cub3d);

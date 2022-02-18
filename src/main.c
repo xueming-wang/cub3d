@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:40:09 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/16 14:38:28 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/18 17:00:41 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int ac, char **av)
     if (!cub3d)
         _exit_("Error\n", "Malloc Error", FAILURE);
     ft_parsing(ac, av[1], cub3d);
-    printf("[PARSING OK]\n");
     start_game(cub3d);
+    free_cub3d(cub3d);
     return (SUCCESS); 
 }

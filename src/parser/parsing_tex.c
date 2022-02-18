@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_tex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:13:36 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/13 18:04:57 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/18 16:34:34 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ void parsing_texinfo(t_cub3d *cub3d)
         _exit_("Error\n", "Texinfo duplicate!\n", FAILURE);
     while (tmp2)
     {
-        if (check_text((tmp2->content), cub3d)) 
+        if (check_text((tmp2->content), cub3d))
+        {
             set_couleur(cub3d, tmp2->content);
+        }
         else 
         {
             free_texture(cub3d);

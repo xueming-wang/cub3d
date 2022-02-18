@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_mapinfo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:02:43 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/15 13:56:03 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/18 16:47:46 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void map_after_parser(t_cub3d *cub3d)
             cub3d->mapinfo.map[j++] = cub3d->config[i++];
     }
     cub3d->mapinfo.map[j] = NULL;
-   
 }
 
 void set_text_path(t_cub3d *cub3d, char *str1, char *str2)
@@ -72,6 +71,7 @@ void set_couleur(t_cub3d *cub3d, char *str)
             setcouleur.nbr = ft_atoi(setcouleur.tab[setcouleur.j++]);
             cub3d->mapinfo.f_couleur[setcouleur.k++] = setcouleur.nbr;
         }
+        free_tab(setcouleur.tab);
     }
     if (str[setcouleur.i] == 'C')
     {
@@ -81,5 +81,6 @@ void set_couleur(t_cub3d *cub3d, char *str)
             setcouleur.nbr = ft_atoi(setcouleur.tab[setcouleur.j++]);
             cub3d->mapinfo.c_couleur[setcouleur.k++] = setcouleur.nbr;
         }
+         free_tab(setcouleur.tab);
     }
 }

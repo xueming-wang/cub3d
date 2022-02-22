@@ -6,38 +6,38 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/18 15:55:09 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/22 16:38:56 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void parsing_filename(char *av)
+void parsing_filename(char *av, t_cub3d *cub3d)
 {
     int i;
 
     i = 0;
     if(ft_strrchr(av, '.') == NULL)
-        _exit_("Error\n", "File Name is Wrong!\n", FAILURE);
+        _exit_("Error\n", "File Name is Wrong!\n", FAILURE, cub3d);
     while (av[i] != '.' )
         i++;
     if(ft_strcmp(av + i, ".cub") != 0)
-        _exit_("Error\n", "File Name is Wrong!\n", FAILURE);
+        _exit_("Error\n", "File Name is Wrong!\n", FAILURE, cub3d);
 }
 
 void parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
 {
     parsing.read = 1;
     parsing.fd = -1;
-    parsing_filename(av);
+    parsing_filename(av, cub3d);
     parsing.fd = open(av, O_RDONLY);
     if (parsing.fd < 0)
-         _exit_("Error\n", "Cannot open file!\n", FAILURE);
+        _exit_("Error\n", "Cannot open file!\n", FAILURE, cub3d);
     while (parsing.read > 0)
     {
         parsing.read = get_next_line(parsing.fd, &parsing.line);
         ft_lstadd_back(&cub3d->dataMap, ft_lstnew(ft_strdup(parsing.line)));
-        free(parsing.line);
+        _free((void **)&parsing.line);
     }  
     close(parsing.fd);
 }
@@ -84,7 +84,7 @@ void ft_parsing(int ac, char *av, t_cub3d *cub3d)
      
     ft_bzero(&parsing, sizeof(t_parsing));
     if (ac != 2)
-        _exit_("Error\n", "bad args", FAILURE);
+        _exit_("Error\n", "bad args", FAILURE, cub3d);
     parsing_file(av, cub3d, parsing);
     parsing_texinfo(cub3d);
     parsing_map(cub3d);

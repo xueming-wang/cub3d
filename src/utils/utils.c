@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:26:07 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/16 14:38:22 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/22 16:09:44 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char **lst_to_tab(t_list *list)
     
     i = 0;
     len = ft_lstsize(list);
-    map = malloc(sizeof(char *) * (len + 1));
+    map = ft_calloc(sizeof(char *), len + 1);
     if (!map)
         return (NULL);
     tmp = list;
@@ -52,8 +52,9 @@ int check_c(char c)
 
 void mlx_img_clean (t_cub3d *cub3d)
 {
-    if (cub3d->mlx_img.img_ptr != NULL)
+    if (cub3d->mlx_img.img_ptr != NULL) {
         mlx_destroy_image(cub3d->mlx, cub3d->mlx_img.img_ptr);
+    }
 }
 
 void tex_img_clean(t_cub3d *cub3d)
@@ -61,6 +62,7 @@ void tex_img_clean(t_cub3d *cub3d)
     int i = 0;
     while(i < TEXTURE_MAX)
     {
+        //  printf("[%d]\n", i);
         if(cub3d->tex_img[i].img_ptr != NULL)
             mlx_destroy_image(cub3d->mlx, cub3d->tex_img[i].img_ptr);
         i++;

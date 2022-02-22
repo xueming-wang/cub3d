@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/18 12:51:10 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/22 16:26:52 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,8 @@ void parsing_map(t_cub3d *cub3d)
     tmp1 = tmp1->next;
     cub3d->config = lst_to_tab(tmp1);
     if (!check_zeroinfo(cub3d->config))
-    {
-        free_texture(cub3d);
-        _exit_("Error\n", "map config is wrong!\n", FAILURE);
-    }
+        _exit_("Error\n", "map config is wrong!\n", FAILURE, cub3d);
     if (!find_player(cub3d, cub3d->config))
-    {
-        free_texture(cub3d);
-        _exit_("Error\n", "player config is wrong!\n", FAILURE);
-    }
+        _exit_("Error\n", "player config is wrong!\n", FAILURE, cub3d);
 }
 

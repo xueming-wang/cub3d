@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/18 16:20:51 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/22 17:02:39 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,13 @@ static int info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
     tab = ft_split(str, ' ');
     len = tab_size(tab);
     if (len != 2)
-    {
-        free_tab(tab);
         return (0);
-    }
     fd = open(tab[1], O_RDONLY);
     if(fd < 0)
-    {
-        free_tab(tab);
         return(0);
-    }
     set_text_path(cub3d, ft_strdup(tab[1]), tab[0]);
     free_tab(tab);
+    close(fd);
     return (1);
 }
 
@@ -74,18 +69,12 @@ static int info_tex2(char *str, int len, char **tab, int i)
     tab = ft_split((str + i + 1), ',');
     len = tab_size(tab);
     if (len != 3)
-    {
-        free_tab(tab);
         return (0);
-    }
     i = 0;
     while (tab[i])
     {
         if (!check_nbr2(tab[i]))
-        {
-            free_tab(tab);
             return (0);
-        }
         i++;
     }
     free_tab(tab);

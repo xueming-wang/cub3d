@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:02:43 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/18 16:47:46 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/22 16:58:52 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void map_after_parser(t_cub3d *cub3d)
             len++;
         i++;
     }
-    cub3d->mapinfo.map = malloc(sizeof(char *) * (len + 1));
+    cub3d->mapinfo.map = ft_calloc(sizeof(char *), len + 1);
     if (!cub3d->mapinfo.map)
         return ;
     i = 0;

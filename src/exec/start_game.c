@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:27:25 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/18 16:52:34 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/22 16:18:30 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	_window(t_cub3d *cub3d)
 {
     cub3d->mlx = mlx_init();
 	if (NULL == cub3d->mlx)
-        exit_mlx("Error: mlx error\n", FAILURE, cub3d);
+		_exit_(NULL, NULL, FAILURE, cub3d);
 	cub3d->win = mlx_new_window(cub3d->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	if (NULL == cub3d->win)
-		exit_mlx("Error: mlx window error\n", FAILURE, cub3d);
+		_exit_(NULL, NULL, FAILURE, cub3d);
 }
 
 void	_image(t_cub3d *cub3d)
@@ -29,15 +29,13 @@ void	_image(t_cub3d *cub3d)
 	img =  &cub3d->mlx_img;
 	img->img_ptr = mlx_new_image(cub3d->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (NULL == img->img_ptr)
-		exit_mlx("Error: img_ptr error\n", FAILURE, cub3d);
+		_exit_(NULL, NULL, FAILURE, cub3d);
 	cub3d->mlx_img.addr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size, &img->endian);
 }
 
 int	window_destroy(t_cub3d *cub3d)
 {
-	(void)cub3d;
-	mlx_destroy_window(cub3d->mlx, cub3d->win);
-	exit_mlx(NULL, SUCCESS, cub3d);
+	_exit_(NULL, NULL, FAILURE, cub3d);
 	return (1);
 }
 

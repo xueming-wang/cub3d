@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:13:36 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/18 16:34:34 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/22 16:39:26 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ void free_texture(t_cub3d *cub3d)
     while(i < TEXTURE_MAX)
     {
         if (cub3d->mapinfo.texture[i])
-            free(cub3d->mapinfo.texture[i]);
+            _free((void **)&cub3d->mapinfo.texture[i]);
         i++;
     }
 }
-
 
 void parsing_texinfo(t_cub3d *cub3d)
 {
@@ -52,18 +51,13 @@ void parsing_texinfo(t_cub3d *cub3d)
    
     tmp = sepa_map(tmp2);
     if (check_dup(tmp2) == 0)
-        _exit_("Error\n", "Texinfo duplicate!\n", FAILURE);
+        _exit_("Error\n", "Texinfo duplicate!\n", FAILURE, cub3d);
     while (tmp2)
     {
-        if (check_text((tmp2->content), cub3d))
-        {
+        if (check_text((tmp2->content), cub3d) == 1)
             set_couleur(cub3d, tmp2->content);
-        }
         else 
-        {
-            free_texture(cub3d);
-            _exit_("Error\n", "Texinfo is wrong!\n", FAILURE);
-        }
+            _exit_("Error\n", "Texinfo is wrong!\n", FAILURE, cub3d);
         if (tmp == tmp2)
             break;
         tmp2 = tmp2->next;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+         #
+#    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/22 16:08:35 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/24 12:06:33 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ IFLAGS = -I./include -I./libft -I./mlx
 
 LFLAGS = -L./libft -lft
 
-CFLAGS 	= -Wall -Wextra -Werror
+CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
 #CFLAGS 	= -g3 -fsanitize=address
 
 MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit

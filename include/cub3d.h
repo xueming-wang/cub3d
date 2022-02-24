@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/22 17:06:11 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/24 12:34:08 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,20 +143,20 @@ typedef struct s_key
 typedef struct s_raycast
 {
 	int			pix;
-	double			cameraX;
-	double			raydir_x;//direction vector
-	double			raydir_y;
+	double		camerax;
+	double		raydir_x;
+	double		raydir_y;
 	int			map_x;
 	int			map_y;
-	double			sideDist_x;//length of ray from current position to next x or y-side
-	double			sideDist_y;
-	double			deltaDist_x;//length of ray from one x or y-side to next x or y-side
-	double			deltaDist_y;
-	double			perpWallDist;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	double		perpwalldist;
 	int			step_x;
 	int			step_y;
-	int			hit;//was there a wall hit?
-	int			side;//was a NS or a EW wall hit?
+	int			hit;
+	int			side;
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
@@ -176,39 +176,38 @@ typedef struct s_line
 typedef struct s_cub3d
 {
 	t_SetCouleur	set_couleur;
-	t_list		*dataMap;
-	char		**config;
-	t_map		mapinfo;
-	void		*win;
-	void		*mlx;
-	t_img		mlx_img;
-	t_img		tex_img[TEXTURE_MAX];
-	t_player	player;
-	t_key		key;	
+	t_list			*datamap;
+	char			**config;
+	t_map			mapinfo;
+	void			*win;
+	void			*mlx;
+	t_img			mlx_img;
+	t_img			tex_img[TEXTURE_MAX];
+	t_player		player;
+	t_key			key;	
 }	t_cub3d;
 
-
-void _free(void **to_free);
-int	main(int ac, char **av);
+void	_free(void **to_free);
+int		main(int ac, char **av);
 /* parsing */
-void		parsing_texinfo(t_cub3d *cub3d);
+void	parsing_texinfo(t_cub3d *cub3d);
 int		first_last_line(char **map);
-void		ft_parsing(int ac, char *av, t_cub3d *cub3d);
+void	ft_parsing(int ac, char *av, t_cub3d *cub3d);
 int		tab_size(char **src);
 t_list	*sepa_map(t_list *list);
 void	parsing_map(t_cub3d *cub3d);
-int	check_horizont(char **map, int x, int y);
-int	check_vertic(char **map, int x, int y);
-int	first_last_line(char **map);
+int		check_horizont(char **map, int x, int y);
+int		check_vertic(char **map, int x, int y);
+int		first_last_line(char **map);
 void	text_count(t_parsing_map *map);
-int	check_dup(t_list *list);
-int	check_text(char *str, t_cub3d *cub3d);
+int		check_dup(t_list *list);
+int		check_text(char *str, t_cub3d *cub3d);
 void	map_after_parser(t_cub3d *cub3d);
 void	set_couleur(t_cub3d *cub3d, char *str);
 void	set_text_path(t_cub3d *cub3d, char *str1, char *str2);
 char	**lst_to_tab(t_list *list);
-int	check_c(char c);
-void	mlx_img_clean (t_cub3d *cub3d);
+int		check_c(char c);
+void	mlx_img_clean(t_cub3d *cub3d);
 void	tex_img_clean(t_cub3d *cub3d);
 
 /* exec */
@@ -220,7 +219,7 @@ void	set_perpWallDist(t_raycast *ray, t_player *player);
 void	set_lineHeight(t_raycast *ray);
 void	set_drawinfo(t_raycast *ray, t_player *player);
 void	color_vertic(t_line *line, unsigned int const color, t_cub3d *cub3d);
-void	text_vertic(t_line *line , t_img text, t_raycast *ray, t_cub3d *cub3d);
+void	text_vertic(t_line *line, t_img text, t_raycast *ray, t_cub3d *cub3d);
 void	player_move_w(t_cub3d *cub3d);
 void	player_move_a(t_cub3d *cub3d);
 void	player_move_s(t_cub3d *cub3d);
@@ -229,18 +228,14 @@ void	player_rotate_left(t_cub3d *cub3d);
 void	player_rotate_right(t_cub3d *cub3d);
 void	do_raycasting(t_cub3d *cub3d);
 void	drawing(t_raycast *ray, t_cub3d *cub3d);
-int	key_press(int keycode, t_cub3d *cub3d);
-int	key_release(int keycode, t_cub3d *cub3d);
+int		key_press(int keycode, t_cub3d *cub3d);
+int		key_release(int keycode, t_cub3d *cub3d);
 void	key_control(t_cub3d *cub3d);
 void	tex_init(t_cub3d *cub3d);
 void	drawing(t_raycast *ray, t_cub3d *cub3d);
 
 /*exit*/
 void	free_tab(char **tab);
-// void	free_cub3d(t_cub3d *cub3d);
 void	_exit_(char *s1, char *s2, int ret, t_cub3d *cub3d);
-// void	free_list(t_list *list);
-// void	free_texture(t_cub3d *cub3d);
-// void	exit_mlx(char *s1, int ret, t_cub3d *cub3d);
 
 #endif 

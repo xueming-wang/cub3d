@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 16:29:02 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/24 17:07:31 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,18 +176,22 @@ typedef struct s_line
 typedef struct s_cub3d
 {
 	t_setclr	setclr;
-	t_list			*datamap;
-	char			**config;
-	t_map			mapinfo;
-	void			*win;
-	void			*mlx;
-	t_img			mlx_img;
-	t_img			tex_img[TEXTURE_MAX];
-	t_player		player;
-	t_key			key;	
+	t_list		*datamap;
+	char		**config;
+	t_map		mapinfo;
+	void		*win;
+	void		*mlx;
+	t_img		mlx_img;
+	t_img		tex_img[TEXTURE_MAX];
+	t_player	player;
+	t_key		key;	
 }	t_cub3d;
 
 void	_free(void **to_free);
+void	free_tab(char **tab);
+void	free_tex(t_cub3d *cub, int i);
+void	free_config(t_cub3d *cub, int i);
+void	free_mapinfo(t_cub3d *cub, int i);
 int		main(int ac, char **av);
 /* parsing */
 void	parsing_texinfo(t_cub3d *cub3d);

@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/24 16:48:06 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/24 16:59:43 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ IFLAGS = -I./include -I./libft -I./mlx
 
 LFLAGS = -L./libft -lft
 
-CFLAGS 	= -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
@@ -34,6 +34,7 @@ SRCS    := ./src/parser/parsing_map.c \
 			./src/parser/parsing.c \
 			./src/main.c \
 			./src/utils/exit.c \
+			./src/utils/exit_util.c \
 			./src/utils/utils.c \
 			./src/parser/set_mapinfo.c \
 			./src/exec/start_game.c \

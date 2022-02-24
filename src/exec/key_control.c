@@ -6,12 +6,11 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:13:31 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/22 16:18:19 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/24 13:08:37 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 int	key_press(int keycode, t_cub3d *cub3d)
 {
@@ -25,9 +24,9 @@ int	key_press(int keycode, t_cub3d *cub3d)
 		cub3d->key.s = 1;
 	else if (keycode == KEY_D && cub3d->key.d == 0)
 		cub3d->key.d = 1;
-    else if (keycode == KEY_LEFT && cub3d->key.left == 0)
+	else if (keycode == KEY_LEFT && cub3d->key.left == 0)
 		cub3d->key.left = 1;
-    else if (keycode == KEY_RIGHT && cub3d->key.right == 0)
+	else if (keycode == KEY_RIGHT && cub3d->key.right == 0)
 		cub3d->key.right = 1;
 	return (1);
 }
@@ -44,9 +43,9 @@ int	key_release(int keycode, t_cub3d *cub3d)
 		cub3d->key.s = 0;
 	else if (keycode == KEY_D && cub3d->key.d == 1)
 		cub3d->key.d = 0;
-    else if (keycode == KEY_LEFT && cub3d->key.left == 1)
+	else if (keycode == KEY_LEFT && cub3d->key.left == 1)
 		cub3d->key.left = 0;
-    else if (keycode == KEY_RIGHT && cub3d->key.right == 1)
+	else if (keycode == KEY_RIGHT && cub3d->key.right == 1)
 		cub3d->key.right = 0;
 	return (1);
 }
@@ -65,5 +64,4 @@ void	key_control(t_cub3d *cub3d)
 		player_rotate_left(cub3d);
 	if (cub3d->key.right == 1)
 		player_rotate_right(cub3d);
-	
 }

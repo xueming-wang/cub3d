@@ -6,13 +6,14 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:56:29 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/16 12:42:35 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/24 13:03:55 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	draw_side(t_line *line, double wall_x, t_raycast *ray, t_cub3d *cub3d)
+static void	draw_side(t_line *line, double wall_x,
+		t_raycast *ray, t_cub3d *cub3d)
 {
 	t_img const	tex_view_by_player[TEXTURE_MAX] = {
 		cub3d->tex_img[e_EA],
@@ -26,10 +27,9 @@ static void	draw_side(t_line *line, double wall_x, t_raycast *ray, t_cub3d *cub3
 
 	tex = tex_view_by_player[e_NO];
 	i = 0;
-	while (++i < TEXTURE_MAX) {
+	while (++i < TEXTURE_MAX)
 		if (i == ray->side)
 			tex = tex_view_by_player[i];
-	}
 	tex_x = (int)(wall_x * (double)tex.width);
 	if ((ray->side == 0 || ray->side == 1) && ray->raydir_x > 0)
 		tex_x = tex.width - tex_x - 1;
@@ -38,7 +38,7 @@ static void	draw_side(t_line *line, double wall_x, t_raycast *ray, t_cub3d *cub3
 	line->start = ray->draw_start;
 	line->end = ray->draw_end;
 	line->tex_x = tex_x;
-	text_vertic(line , tex, ray, cub3d);
+	text_vertic(line, tex, ray, cub3d);
 }
 
 uint32_t	create_rgb(int r, int g, int b)
@@ -50,7 +50,6 @@ static void	draw_ceiling_floor(t_line *line, t_raycast *ray, t_cub3d *cub3d)
 {
 	unsigned char const	*c = cub3d->mapinfo.c_couleur;
 	unsigned char const	*f = cub3d->mapinfo.f_couleur;
-
 
 	line->start = 0;
 	line->end = ray->draw_start;
@@ -68,11 +67,11 @@ void	drawing(t_raycast *ray, t_cub3d *cub3d)
 	ft_bzero(&line, sizeof(t_line));
 	line.line_x = ray->pix;
 	if (ray->side == 0 || ray->side == 1)
-		wall_x = cub3d->player.pos_y + ray->perpWallDist * ray->raydir_y;
+		wall_x = cub3d->player.pos_y + ray->perpwalldist * ray->raydir_y;
 	else
-		wall_x = cub3d->player.pos_x + ray->perpWallDist * ray->raydir_x;
+		wall_x = cub3d->player.pos_x + ray->perpwalldist * ray->raydir_x;
 	wall_x -= floor(wall_x);
-	if (cub3d->mapinfo.map[ray->map_y][ray->map_x] == '1') 
+	if (cub3d->mapinfo.map[ray->map_y][ray->map_x] == '1')
 		draw_side(&line, wall_x, ray, cub3d);
-	 draw_ceiling_floor(&line, ray, cub3d);
+	draw_ceiling_floor(&line, ray, cub3d);
 }

@@ -6,65 +6,68 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:26:07 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/22 16:09:44 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/24 15:43:02 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int tab_size(char **src)
+int	tab_size(char **src)
 {
-    int i = 0;
+	int	i;
 
-    while (src != NULL && src[i] != NULL)
-        ++i;
-    return (i);
-}
-char **lst_to_tab(t_list *list)
-{
-    char **map;
-    int len;
-    int i;
-    t_list *tmp;
-    
-    i = 0;
-    len = ft_lstsize(list);
-    map = ft_calloc(sizeof(char *), len + 1);
-    if (!map)
-        return (NULL);
-    tmp = list;
-    while (tmp && i < len)
-    {
-        map[i] = ft_strdup((char *)tmp->content);
-        tmp = tmp->next;
-        i++;   
-    } 
-    map[i] = NULL;
-    return (map);
+	i = 0;
+	while (src != NULL && src[i] != NULL)
+		++i;
+	return (i);
 }
 
-int check_c(char c)
+char	**lst_to_tab(t_list *list)
 {
-    if (c != '0' && c != '1' && c != ' ' && c != 'N' && c != 'S' && c != 'W'  && c != 'E')
-        return (0);
-    return (1);
+	char	**map;
+	int		len;
+	int		i;
+	t_list	*tmp;
+
+	i = 0;
+	len = ft_lstsize(list);
+	map = ft_calloc(sizeof(char *), len + 1);
+	if (!map)
+		return (NULL);
+	tmp = list;
+	while (tmp && i < len)
+	{
+		map[i] = ft_strdup((char *)tmp->content);
+		tmp = tmp->next;
+		i++;
+	}
+	map[i] = NULL;
+	return (map);
 }
 
-void mlx_img_clean (t_cub3d *cub3d)
+int	check_c(char c)
 {
-    if (cub3d->mlx_img.img_ptr != NULL) {
-        mlx_destroy_image(cub3d->mlx, cub3d->mlx_img.img_ptr);
-    }
+	if (c != '0' && c != '1' && c != ' ' && c != 'N'
+		&& c != 'S' && c != 'W' && c != 'E')
+		return (0);
+	return (1);
 }
 
-void tex_img_clean(t_cub3d *cub3d)
+void	mlx_img_clean(t_cub3d *cub3d)
 {
-    int i = 0;
-    while(i < TEXTURE_MAX)
-    {
-        //  printf("[%d]\n", i);
-        if(cub3d->tex_img[i].img_ptr != NULL)
-            mlx_destroy_image(cub3d->mlx, cub3d->tex_img[i].img_ptr);
-        i++;
-    }
+	if (cub3d->mlx_img.img_ptr != NULL)
+		mlx_destroy_image(cub3d->mlx, cub3d->mlx_img.img_ptr);
+}
+
+void	tex_img_clean(t_cub3d *cub3d)
+{
+	int	i;
+
+	i = 0;
+	while (i < TEXTURE_MAX)
+	{
+		if (cub3d->tex_img[i].img_ptr != NULL)
+			mlx_destroy_image(cub3d->mlx, cub3d->tex_img[i].img_ptr);
+		i++;
+	}
 }

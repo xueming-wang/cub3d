@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_mapinfo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:02:43 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 15:31:14 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/24 15:51:57 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,29 @@ void	set_text_path(t_cub3d *cub3d, char *str1, char *str2)
 
 void	set_couleur(t_cub3d *cub3d, char *str)
 {
-	t_SetCouleur	setcouleur;
+	t_setclr	setclr;
 
-	ft_bzero(&setcouleur, sizeof(t_SetCouleur));
-	while (str[setcouleur.i] && str[setcouleur.i] == ' ' )
-		setcouleur.i++;
-	if (str[setcouleur.i] == 'F')
+	ft_bzero(&setclr, sizeof(t_setclr));
+	while (str[setclr.i] && str[setclr.i] == ' ' )
+		setclr.i++;
+	if (str[setclr.i] == 'F')
 	{
-		setcouleur.tab = ft_split((str + setcouleur.i + 1), ',');
-		while (setcouleur.tab && setcouleur.tab[setcouleur.j]
-			&& setcouleur.k < 3)
+		setclr.tab = ft_split((str + setclr.i + 1), ',');
+		while (setclr.tab && setclr.tab[setclr.j] && setclr.k < 3)
 		{
-			setcouleur.nbr = ft_atoi(setcouleur.tab[setcouleur.j++]);
-			cub3d->mapinfo.f_couleur[setcouleur.k++] = setcouleur.nbr;
+			setclr.nbr = ft_atoi(setclr.tab[setclr.j++]);
+			cub3d->mapinfo.f_couleur[setclr.k++] = setclr.nbr;
 		}
-		free_tab(setcouleur.tab);
+		free_tab(setclr.tab);
 	}
-	if (str[setcouleur.i] == 'C')
+	if (str[setclr.i] == 'C')
 	{
-		setcouleur.tab = ft_split((str + setcouleur.i + 1), ',');
-		while (setcouleur.tab && setcouleur.tab[setcouleur.j]
-			&& setcouleur.k < 3)
+		setclr.tab = ft_split((str + setclr.i + 1), ',');
+		while (setclr.tab && setclr.tab[setclr.j] && setclr.k < 3)
 		{
-			setcouleur.nbr = ft_atoi(setcouleur.tab[setcouleur.j++]);
-			cub3d->mapinfo.c_couleur[setcouleur.k++] = setcouleur.nbr;
+			setclr.nbr = ft_atoi(setclr.tab[setclr.j++]);
+			cub3d->mapinfo.c_couleur[setclr.k++] = setclr.nbr;
 		}
-		free_tab(setcouleur.tab);
+		free_tab(setclr.tab);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 15:12:25 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/24 16:29:02 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ typedef struct s_idx
 	int	player;
 }	t_idx;
 
-typedef struct s_setCouleur
+typedef struct s_setclr
 {
 	int		i;
 	char	**tab;
 	int		nbr;
 	int		j;
 	int		k;
-}	t_SetCouleur;
+}	t_setclr;
 
 typedef struct s_player
 {
@@ -175,7 +175,7 @@ typedef struct s_line
 
 typedef struct s_cub3d
 {
-	t_SetCouleur	set_couleur;
+	t_setclr	setclr;
 	t_list			*datamap;
 	char			**config;
 	t_map			mapinfo;
@@ -209,6 +209,8 @@ char	**lst_to_tab(t_list *list);
 int		check_c(char c);
 void	mlx_img_clean(t_cub3d *cub3d);
 void	tex_img_clean(t_cub3d *cub3d);
+int		check_zeroinfo(char **map);
+int		check_hor_ver(char **map, int x, int y);
 
 /* exec */
 void	start_game(t_cub3d *cub3d);

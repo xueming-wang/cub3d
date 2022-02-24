@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/24 12:06:33 by xuwang           ###   ########.fr        #
+#    Updated: 2022/02/24 16:48:06 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ IFLAGS = -I./include -I./libft -I./mlx
 
 LFLAGS = -L./libft -lft
 
-CFLAGS 	= -Wall -Wextra -Werror -g3 -fsanitize=address
-#CFLAGS 	= -g3 -fsanitize=address
+CFLAGS 	= -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
@@ -29,6 +28,7 @@ MLX = libmlx.dylib
 
 SRCS    := ./src/parser/parsing_map.c \
 			./src/parser/parsing_map_part.c \
+			./src/parser/parsing_map_part2.c \
 			./src/parser/parsing_tex.c \
 			./src/parser/parsing_tex_part.c \
 			./src/parser/parsing.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:11:25 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 17:04:23 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/02/25 15:44:20 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ void	exit_clean(t_cub3d *cub)
 		if (cub->mlx_img.img_ptr)
 			mlx_destroy_image(cub->mlx, cub->mlx_img.img_ptr);
 		if (cub->mlx)
+		{
 			mlx_destroy_window(cub->mlx, cub->win);
-		mlx_destroy_display(cub->mlx);
+			mlx_destroy_display(cub->mlx);
+		}
 		_free((void **)&cub->mlx);
 		if (cub->datamap)
 			ft_lstclear(&cub->datamap, free);

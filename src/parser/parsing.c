@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 14:48:02 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 16:27:28 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
 	parsing.read = 1;
 	parsing.fd = -1;
 	parsing_filename(av, cub3d);
-	parsing.fd = open(av, O_RDONLY);
+	parsing.fd = open(av, O_RDONLY | __O_NOFOLLOW);
 	if (parsing.fd < 0)
 		_exit_("Error\n", "Cannot open file!\n", FAILURE, cub3d);
 	while (parsing.read > 0)

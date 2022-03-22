@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 15:43:18 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 16:27:13 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
 		free_tab(tab);
 		_exit_("Error\n", "Tex info wrong!\n", FAILURE, cub3d);
 	}
-	fd = open(tab[1], O_RDONLY);
+	fd = open(tab[1], O_RDONLY | __O_NOFOLLOW);
 	if (fd < 0)
 	{
 		free_tab(tab);

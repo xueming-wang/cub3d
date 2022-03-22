@@ -1,4 +1,0 @@
-- [x] no run when file name begin with "."
-- [x] leak when path wrong (no leak if id wrong)
-- [x] leak when color wrong (leak with color id)
-- [x] leak when map wrong

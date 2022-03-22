@@ -29,12 +29,12 @@ char	**lst_to_tab(t_list *list)
 	int		i;
 	t_list	*tmp;
 
-	i = 0;
 	len = ft_lstsize(list);
 	map = ft_calloc(sizeof(char *), len + 1);
 	if (!map)
 		return (NULL);
 	tmp = list;
+	i = 0;
 	while (tmp && i < len)
 	{
 		map[i] = ft_strdup((char *)tmp->content);

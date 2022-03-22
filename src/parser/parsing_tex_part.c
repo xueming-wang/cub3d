@@ -52,10 +52,16 @@ static int	info_tex(char *str, int len, char **tab, t_cub3d *cub3d)
 	tab = ft_split(str, ' ');
 	len = tab_size(tab);
 	if (len != 2)
-		return (0);
+	{
+		free_tab(tab);
+		_exit_("Error\n", "Tex info wrong!\n", FAILURE, cub3d);
+	}
 	fd = open(tab[1], O_RDONLY);
 	if (fd < 0)
-		return (0);
+	{
+		free_tab(tab);
+		_exit_("Error\n", "Tex file non found!\n", FAILURE, cub3d);
+	}
 	set_text_path(cub3d, ft_strdup(tab[1]), tab[0]);
 	free_tab(tab);
 	close(fd);
@@ -68,13 +74,19 @@ static int	info_tex2(char *str, int len, char **tab, int i)
 		return (0);
 	tab = ft_split((str + i + 1), ',');
 	len = tab_size(tab);
-	if (len != 3)
+	if (len != 3) // +
+	{
+		free_tab(tab);
 		return (0);
+	}
 	i = 0;
 	while (tab[i])
 	{
-		if (!check_nbr2(tab[i]))
+		if (!check_nbr2(tab[i])) // +
+		{
+			free_tab(tab);
 			return (0);
+		}
 		i++;
 	}
 	free_tab(tab);

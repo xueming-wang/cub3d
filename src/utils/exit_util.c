@@ -17,18 +17,21 @@ void	free_tab(char **tab)
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (tab && tab[i])
 	{
 		free(tab[i]);
+		tab[i] = NULL;
 		i++;
 	}
-	_free((void **)&tab);
+	free(tab[i]);
+	free(tab);
 	tab = NULL;
 }
 
 void	_free(void **to_free)
 {
-	free(*to_free);
+	if(to_free && *to_free)
+		free(*to_free);
 	*to_free = NULL;
 }
 
@@ -45,26 +48,33 @@ void	free_tex(t_cub3d *cub, int i)
 
 void	free_config(t_cub3d *cub, int i)
 {
-	i = 0;
 	if (cub->config)
 	{
+		i = 0;
 		while (cub->config[i])
-			_free((void **)&cub->config[i++]);
+		{
+			free((char *)cub->config[i]);
+			cub->config[i] = NULL;
+			++i;
+		}
+		free(cub->config[i]);
 		free(cub->config);
+		cub->config = NULL;
 	}
 }
 
 void	free_mapinfo(t_cub3d *cub, int i)
 {
 	i = 0;
+	while (i < TEXTURE_MAX)
+	{
+		if (cub->mapinfo.texture[i])
+			_free((void **)&cub->mapinfo.texture[i]);
+		i++;
+	}
 	if (cub->mapinfo.map)
 	{
-		while (i < TEXTURE_MAX)
-		{
-			if (cub->mapinfo.texture[i])
-				_free((void **)&cub->mapinfo.texture[i]);
-			i++;
-		}
 		free(cub->mapinfo.map);
+		cub->mapinfo.map = NULL;
 	}
 }

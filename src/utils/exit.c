@@ -56,9 +56,10 @@ void	exit_clean(t_cub3d *cub)
 		_free((void **)&cub->mlx);
 		if (cub->datamap)
 			ft_lstclear(&cub->datamap, free);
-		free_config(cub, i);
 		free_mapinfo(cub, i);
-		_free((void **)&cub);
+		free_config(cub, i);
+		free(cub);
+		cub = NULL;
 	}
 }
 

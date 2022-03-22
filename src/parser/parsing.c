@@ -16,12 +16,12 @@ void	parsing_filename(char *av, t_cub3d *cub3d)
 {
 	int	i;
 
-	i = 0;
 	if (ft_strrchr(av, '.') == NULL)
 		_exit_("Error\n", "File Name is Wrong!\n", FAILURE, cub3d);
-	while (av[i] != '.' )
-		i++;
-	if (ft_strcmp(av + i, ".cub") != 0)
+	i = ft_strlen(av);
+	while (av[i - 1] != '.' ) 
+		i--;
+	if (i <= 0 || ft_strcmp(av + i - 1, ".cub") != 0)
 		_exit_("Error\n", "File Name is Wrong!\n", FAILURE, cub3d);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_part2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:25:58 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 16:34:10 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:55:28 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,11 @@ int	check_hor_ver(char **map, int x, int y)
 	if (check_horizont(map, x, y) && check_vertic(map, x, y) == 1)
 		return (1);
 	return (0);
+}
+
+void	get_player_pos(t_cub3d *cub3d, t_idx pos, int i, char direction)
+{
+	cub3d->player.pos_x = (double)pos.j + 0.5;
+	cub3d->player.pos_y = (double)pos.i - i + 1 + 0.5;
+	cub3d->player.direction = direction;
 }

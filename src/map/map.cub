@@ -1,7 +1,7 @@
 
 EA ./tex/east_texture.xpm
 NO  ./tex/north_texture.xpm
-SO  ./tex/south_texture.xpm
+    SO  ./tex/south_texture.xpm
 WE ./tex/west_texture.xpm
 
 

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/03/22 18:27:12 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:52:25 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,7 @@ int	_ply(char **map, int x, int y, int i)
 	return (0);
 }
 
-void	get_player_pos(t_cub3d *cub3d, t_idx pos, int i, char direction)
-{
-	cub3d->player.pos_x = (double)pos.j + 0.5;
-	cub3d->player.pos_y = (double)pos.i - i + 1 + 0.5;
-	cub3d->player.direction = direction;
-}
-
-static int line_is_empty(char *line)
+static int	line_is_empty(char *line)
 {
 	int	i;
 
@@ -64,7 +57,7 @@ int	find_player(t_cub3d *cub3d, char **map)
 	while (map[idx.i])
 	{
 		if (!line_is_empty(map[idx.i++]))
-			break;
+			break ;
 	}
 	i = idx.i;
 	while (map[idx.i])

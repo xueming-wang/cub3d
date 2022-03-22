@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:20:51 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 13:13:12 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:31:29 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ static void	set_player_dir(t_player *player)
 
 void	player_init(t_cub3d *cub3d)
 {
-	cub3d->player.pos_x += 0.5;
-	cub3d->player.pos_y += 0.5;
 	set_player_dir(&cub3d->player);
 	cub3d->player.rot_speed = 0.10;
 	cub3d->player.speed = 0.10;

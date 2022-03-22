@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:12 by xuwang            #+#    #+#             */
-/*   Updated: 2022/03/22 16:27:13 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:34:26 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	info_tex2(char *str, int len, char **tab, int i)
 		return (0);
 	tab = ft_split((str + i + 1), ',');
 	len = tab_size(tab);
-	if (len != 3) // +
+	if (len != 3)
 	{
 		free_tab(tab);
 		return (0);
@@ -82,7 +82,7 @@ static int	info_tex2(char *str, int len, char **tab, int i)
 	i = 0;
 	while (tab[i])
 	{
-		if (!check_nbr2(tab[i])) // +
+		if (!check_nbr2(tab[i]))
 		{
 			free_tab(tab);
 			return (0);

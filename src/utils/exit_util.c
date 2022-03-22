@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:53:12 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 17:06:58 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:35:33 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_tab(char **tab)
 
 void	_free(void **to_free)
 {
-	if(to_free && *to_free)
+	if (to_free && *to_free)
 		free(*to_free);
 	*to_free = NULL;
 }

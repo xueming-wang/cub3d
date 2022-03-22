@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 17:07:31 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:31:40 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ typedef struct s_cub3d
 	t_img		mlx_img;
 	t_img		tex_img[TEXTURE_MAX];
 	t_player	player;
-	t_key		key;	
+	t_key		key;
 }	t_cub3d;
 
 void	_free(void **to_free);

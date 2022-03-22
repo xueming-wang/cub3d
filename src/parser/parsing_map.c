@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/02/24 16:51:29 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:27:12 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,41 @@ int	_ply(char **map, int x, int y, int i)
 	return (0);
 }
 
-void	get_player_pos(t_cub3d *cub3d, int pos_x, int pos_y, char direction)
+void	get_player_pos(t_cub3d *cub3d, t_idx pos, int i, char direction)
 {
-	cub3d->player.pos_x = (double)pos_x;
-	cub3d->player.pos_y = (double)pos_y;
+	cub3d->player.pos_x = (double)pos.j + 0.5;
+	cub3d->player.pos_y = (double)pos.i - i + 1 + 0.5;
 	cub3d->player.direction = direction;
+}
+
+static int line_is_empty(char *line)
+{
+	int	i;
+
+	i = 0;
+	if (line[0] == '\0')
+		return (1);
+	while (line[i])
+	{
+		if (line[i] != ' ')
+			return (0);
+		++i;
+	}
+	return (1);
 }
 
 int	find_player(t_cub3d *cub3d, char **map)
 {
 	t_idx	idx;
+	int		i;
 
 	ft_bzero(&idx, sizeof(t_idx));
+	while (map[idx.i])
+	{
+		if (!line_is_empty(map[idx.i++]))
+			break;
+	}
+	i = idx.i;
 	while (map[idx.i])
 	{
 		idx.j = 0;
@@ -51,7 +74,7 @@ int	find_player(t_cub3d *cub3d, char **map)
 		{
 			if (_ply(map, idx.i, idx.j, idx.k))
 			{
-				get_player_pos(cub3d, idx.j, idx.i, g_ply[idx.k]);
+				get_player_pos(cub3d, idx, i, map[idx.i][idx.j]);
 				map[idx.i][idx.j] = '0';
 				idx.player++;
 			}

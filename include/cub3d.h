@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:05:00 by xuwang            #+#    #+#             */
-/*   Updated: 2022/03/22 18:52:56 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 19:45:17 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,8 @@ void	tex_img_clean(t_cub3d *cub3d);
 int		check_zeroinfo(char **map);
 int		check_hor_ver(char **map, int x, int y);
 void	get_player_pos(t_cub3d *cub3d, t_idx pos, int i, char direction);
+int		init_i(t_idx *idx, char **map);
+int		line_is_empty(char *line);
 
 /* exec */
 void	start_game(t_cub3d *cub3d);

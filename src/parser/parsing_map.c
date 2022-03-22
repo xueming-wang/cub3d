@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 16:04:10 by xuwang            #+#    #+#             */
-/*   Updated: 2022/03/22 18:52:25 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/22 19:45:03 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	_ply(char **map, int x, int y, int i)
 	return (0);
 }
 
-static int	line_is_empty(char *line)
+int	line_is_empty(char *line)
 {
 	int	i;
 
@@ -54,12 +54,7 @@ int	find_player(t_cub3d *cub3d, char **map)
 	int		i;
 
 	ft_bzero(&idx, sizeof(t_idx));
-	while (map[idx.i])
-	{
-		if (!line_is_empty(map[idx.i++]))
-			break ;
-	}
-	i = idx.i;
+	i = init_i(&idx, map);
 	while (map[idx.i])
 	{
 		idx.j = 0;

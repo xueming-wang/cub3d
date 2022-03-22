@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
+#    By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 15:11:40 by xuwang            #+#    #+#              #
-#    Updated: 2022/02/25 15:42:01 by xuwang           ###   ########.fr        #
+#    Updated: 2022/03/22 16:59:35 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Cub3D
+NAME = cub3D
 
 CC 	= clang
 

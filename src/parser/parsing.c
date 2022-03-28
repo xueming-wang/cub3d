@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@42.student.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:18:13 by xuwang            #+#    #+#             */
-/*   Updated: 2022/03/22 18:33:59 by xuwang           ###   ########.fr       */
+/*   Updated: 2022/03/28 14:59:36 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	parsing_file(char *av, t_cub3d *cub3d, t_parsing parsing)
 	parsing.read = 1;
 	parsing.fd = -1;
 	parsing_filename(av, cub3d);
-	parsing.fd = open(av, O_RDONLY | __O_NOFOLLOW);
+	parsing.fd = open(av, O_RDWR | __O_NOFOLLOW);
 	if (parsing.fd < 0)
 		_exit_("Error\n", "Cannot open file!\n", FAILURE, cub3d);
 	while (parsing.read > 0)
@@ -85,7 +85,7 @@ void	ft_parsing(int ac, char *av, t_cub3d *cub3d)
 
 	ft_bzero(&parsing, sizeof(t_parsing));
 	if (ac != 2)
-		_exit_("Error\n", "bad args", FAILURE, cub3d);
+		_exit_("Error\n", "bad args\n", FAILURE, cub3d);
 	parsing_file(av, cub3d, parsing);
 	parsing_texinfo(cub3d);
 	parsing_map(cub3d);

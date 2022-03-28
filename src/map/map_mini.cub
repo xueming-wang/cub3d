@@ -1,5 +1,5 @@
 
-F 220w,100,0
+F 220,100,0
 C 225,30,0
 
 EA ./tex/east_texture.xpm
